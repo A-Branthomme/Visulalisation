@@ -4,8 +4,6 @@ Created on Tue Sep 22 18:46:04 2020
 
 @author: amaury
 
-modification 
-
 """
 import http.server
 import socketserver
