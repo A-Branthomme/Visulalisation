@@ -3,6 +3,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>TP_Visualisation</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -39,7 +47,7 @@
               <li>
                 <a href="services.html" class="animsition-link">Outils de visualisation</a>
                 <ul>
-                  <li><a href="#">Carte du prix immobilier</a></li>
+                  <li><a href="carte.html">Carte du prix immobilier</a></li>
                   <li><a href="visualisation_2.html">Visualisation 2</a></li>
                   <li>
                     <a href="#">HR Management</a>
@@ -73,7 +81,7 @@
       <div class="container ">
         <div class="row align-items-lg-center" style="min-height: 450px">
           <div class="col-lg-6 order-lg-1 text-center mx-auto">
-            <h1 class="heading mb-3 text-white" data-aos="fade-up">Titre de la page</h1>
+            <h1 class="heading mb-3 text-white" data-aos="fade-up">Carte du prix de l'immobilier</h1>
           </div>
         </div>
       </div>
@@ -85,6 +93,8 @@
           <h2>Titre du paragraphe</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit reiciendis dolore, facilis ipsam officiis quasi?</p>
         </div>
+        <!-- Le conteneur de notre carte (avec une contrainte CSS pour la taille) -->
+        <div class="container" id="map" style="width:1200px; height:800px"></div>
       </div>
     </div> <!-- .templateux-section -->
 
@@ -107,6 +117,8 @@
 
   <script src="js/scripts-all.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/map_scripts.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js" charset="utf-8"></script>
 
 </body>
 </html>
