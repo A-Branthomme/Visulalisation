@@ -6,9 +6,8 @@ This is a temporary script file.
 """
 
 import os, csv
-import pandas as pd 
+import pandas as pd
 import numpy as np
-
 
 # Load data
 os.chdir("/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web/Data Paris/Stations")
@@ -48,11 +47,3 @@ df_apts.to_csv('Data_appartements.csv', sep=';', encoding = "utf-8-sig", index =
 # calcul pour chaque appartement de la station la plus proche
 #apts = df_apts.to_numpy()
 #test = apts[:,[0,23,24]]
-
-
-
-
-
-
-
-
