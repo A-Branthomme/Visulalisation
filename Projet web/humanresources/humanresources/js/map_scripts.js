@@ -37,26 +37,14 @@ var station =
 
 L.geoJSON(station).addTo(map);
 
-var ligneMetro =
-  {
-    "type": "Feature",
-    "properties": {
-      "LINE": "3bis",
-      "COLOR": "#9A9940"
-    },
-    "geometry": {
-      "type": "LineString",
-      "coordinates": [
-              [2.40638582344912, 48.8770699912197],
-              [2.40485763553065, 48.871951099492],
-              [2.40135199013901, 48.868519874537],
-              [2.39846223866212, 48.8648347782704]
-      ]
-    }
-  };
-
-L.geoJSON(ligneMetro).addTo(map);
-
-$.getJSON("../../ligne_metro.geojson", function(data) {
-  L.geoJSON(data).addTo(map);
+$.getJSON("../../Data Paris/Stations/ligne_metro.geojson", function(data) {
+  var dataLayer = L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            var popupText = "Ligne: " + feature.properties.route_short_name;
+            layer.bindPopup(popupText);
+          },
+        // style: {"color": "#" + feature.properties.route_color};
+        // }
+      );
+  dataLayer.addTo(map);
 });
