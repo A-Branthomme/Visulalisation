@@ -8,6 +8,7 @@ This is a temporary script file.
 import os, csv
 import pandas as pd
 import numpy as np
+from scipy.spatial.distance import cdist
 
 # Load data
 os.chdir("/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web/Data Paris/Stations")
@@ -43,7 +44,3 @@ df_apts["Apt_ID"] = "Apt_" + df_apts.index.astype(str)
 
 # sauvegarde de la db
 df_apts.to_csv('Data_appartements.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
-
-# calcul pour chaque appartement de la station la plus proche
-#apts = df_apts.to_numpy()
-#test = apts[:,[0,23,24]]
