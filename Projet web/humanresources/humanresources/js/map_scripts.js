@@ -14,17 +14,45 @@ var map = new L.Map("map", {
 });
 
 // Ajout de Features à la carte
-var geojsonFeature = {
+var station =
+  {
+    "type":"Feature",
+    "properties":{
+      "ID":"1842",
+      "STATION":"GARE DU NORD",
+      "CITY":"Paris",
+      "QUARTER":"10",
+      "TRAFIC":"49977513",
+      "LINES":"4-5",
+      "COLORS":"#BB4D98-#DE8B53"
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":[
+           2.35470307836603,
+           48.8799654432891
+        ]
+      }
+  };
+
+L.geoJSON(station).addTo(map);
+
+var ligneMetro =
+  {
     "type": "Feature",
     "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "popupContent": "This is where the Rockies play!"
+      "LINE": "3bis",
+      "COLOR": "#9A9940"
     },
     "geometry": {
-        "type": "Point",
-        "coordinates": [2.333,48.853]
+      "type": "LineString",
+      "coordinates": [
+              [2.40638582344912, 48.8770699912197],
+              [2.40485763553065, 48.871951099492],
+              [2.40135199013901, 48.868519874537],
+              [2.39846223866212, 48.8648347782704]
+      ]
     }
-};
+  };
 
-L.geoJSON(geojsonFeature).addTo(map);
+L.geoJSON(ligneMetro).addTo(map);
