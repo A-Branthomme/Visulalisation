@@ -57,6 +57,6 @@ var ligneMetro =
 
 L.geoJSON(ligneMetro).addTo(map);
 
-$.getJSON("Projet web\Data Paris\Stations\ligne_metro.geojson", function(data) {
-  L.geoJson(data).addTo(map);
+$.getJSON("../../ligne_metro.geojson", function(data) {
+  L.geoJSON(data).addTo(map);
 });
