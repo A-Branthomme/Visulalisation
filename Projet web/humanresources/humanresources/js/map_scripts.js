@@ -43,8 +43,12 @@ $.getJSON("../../Data Paris/Stations/ligne_metro.geojson", function(data) {
             var popupText = "Ligne: " + feature.properties.route_short_name;
             layer.bindPopup(popupText);
           },
-        // style: {"color": "#" + feature.properties.route_color};
-        // }
-      );
+        style: function(feature){
+          var color = "#" + feature.properties.route_color;
+          return{
+            color: color
+          }
+        }
+        });
   dataLayer.addTo(map);
-});
+  });
