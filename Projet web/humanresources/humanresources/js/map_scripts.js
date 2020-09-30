@@ -14,50 +14,7 @@ var map = new L.Map("map", {
 });
 
 // Ajout de Features à la carte
-var station1 =
-  {
-    "type":"Feature",
-    "properties":{
-      "ID":"1842",
-      "STATION":"GARE DU NORD",
-      "CITY":"Paris",
-      "QUARTER":"10",
-      "TRAFIC":"49977513",
-      "LINES":"4-5",
-      "COLORS":"#BB4D98-#DE8B53"
-      },
-      "geometry":{
-        "type":"Point",
-        "coordinates":[
-           2.35470307836603,
-           48.8799654432891
-        ]
-      }
-  };
-
-  var station2 =
-    {
-      "type":"Feature",
-      "properties":{
-        "ID":"1842",
-        "STATION":"GARE DU NORD",
-        "CITY":"Paris",
-        "QUARTER":"10",
-        "TRAFIC":"49977513",
-        "LINES":"4-5",
-        "COLORS":"#BB4D98-#DE8B53"
-        },
-        "geometry":{
-          "type":"Point",
-          "coordinates":[
-             2.36470307836603,
-             48.8799654432891
-          ]
-        }
-    };
-
-// L.geoJSON(station).addTo(map);
-
+//Ajout des lignes de métro
 $.getJSON("../../Data Paris/Stations/ligne_metro.geojson", function(data) {
   var dataLayer = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
@@ -79,6 +36,18 @@ $.getJSON("../../Data Paris/Stations/ligne_metro.geojson", function(data) {
   dataLayer.addTo(map);
   });
 
+//Ajout des Stations
+
+$.getJSON("../../Data Paris/Stations/Data_metro_avec_prix.geojson", function(data) {
+  var station_layer = L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            var popupText = "Station: " + feature.properties.nom_gare;
+            layer.bindPopup(popupText);
+          },
+        pointToLayer: createCircles
+        });
+  station_layer.addTo(map);
+  });
 
   function zoomToFeature(e) {
       map.fitBounds(e.target.getBounds());
@@ -100,13 +69,21 @@ $.getJSON("../../Data Paris/Stations/ligne_metro.geojson", function(data) {
   };
 
   function resetHighlight(e) {
-}
+};
 
-  var years = [station1, station2];
-  layerGroup = L.layerGroup(years);
-  var sliderControl = L.Control.SliderControl({
-    layer: layerGroup,
-    follow: true
-  });
-  map.addControl(sliderControl);
-  sliderControl.startSlider();
+// create a vector circle centered on each point feature's latitude and longitude
+function createCircles(feature, latlng) {
+  return L.circleMarker(latlng, {
+    color: '#666',
+    radius: parseFloat(feature.properties.prix_moyen_2014)/1000
+  })
+};
+
+var years = [dataLayer, station_layer];
+layerGroup = L.layerGroup(years);
+var sliderControl = L.Control.SliderControl({
+  layer: layerGroup,
+  follow: true
+});
+map.addControl(sliderControl);
+sliderControl.startSlider();
