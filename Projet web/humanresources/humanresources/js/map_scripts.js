@@ -22,7 +22,7 @@ $.getJSON("../../Data Paris/Stations/ligne_metro.geojson", function(data) {
             layer.bindPopup(popupText);
             layer.on({
                 mouseover: highlightFeature,
-                // mouseout: resetHighlight,
+                mouseout: resetHighlight,
                 click: zoomToFeature
             });
           },
@@ -37,11 +37,10 @@ $.getJSON("../../Data Paris/Stations/ligne_metro.geojson", function(data) {
   });
 
 //Ajout des Stations
-
 $.getJSON("../../Data Paris/Stations/Data_metro_avec_prix.geojson", function(data) {
   var station_layer = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
-            var popupText = "Station: " + feature.properties.nom_gare;
+            var popupText = "Station: " + feature.properties.nom_gare + "<br>Prix : " + feature.properties.prix_moyen_2014 +" €/m²";
             layer.bindPopup(popupText);
           },
         pointToLayer: createCircles
@@ -68,8 +67,12 @@ $.getJSON("../../Data Paris/Stations/Data_metro_avec_prix.geojson", function(dat
       }
   };
 
-  function resetHighlight(e) {
-};
+  function resetHighlight(feature,e) {
+      var color = "#" + feature.properties.route_color;
+      return{
+        color: color
+      }
+    };
 
 // create a vector circle centered on each point feature's latitude and longitude
 function createCircles(feature, latlng) {
@@ -79,11 +82,22 @@ function createCircles(feature, latlng) {
   })
 };
 
-var years = [dataLayer, station_layer];
-layerGroup = L.layerGroup(years);
-var sliderControl = L.Control.SliderControl({
-  layer: layerGroup,
-  follow: true
+var markersClusterCustomPlus = new L.MarkerClusterGroup({
+    iconCreateFunction: function(cluster) {
+        var digits = (cluster.getChildCount()+'').length;
+        return L.divIcon({
+            html: cluster.getChildCount(),
+            className: 'cluster digits-'+digits,
+            iconSize: null
+        });
+    }
 });
-map.addControl(sliderControl);
-sliderControl.startSlider();
+
+// var years = [dataLayer, station_layer];
+// layerGroup = L.layerGroup(years);
+// var sliderControl = L.Control.SliderControl({
+//   layer: layerGroup,
+//   follow: true
+// });
+// map.addControl(sliderControl);
+// sliderControl.startSlider();
