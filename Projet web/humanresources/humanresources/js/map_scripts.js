@@ -26,7 +26,7 @@ $.getJSON("./api/ligne_metro.geojson", function (data) {
       layer.bindPopup(popupText);
       layer.on({
         mouseover: highlightFeature,
-        mouseout: resetHighlight,
+        mouseout: resetHighlightLigne,
         click: zoomToFeature
       });
     },
@@ -44,10 +44,11 @@ $.getJSON("./api/ligne_metro.geojson", function (data) {
 $.getJSON("./api/Data_metro_avec_prix.geojson", function (data) {
   var station_layer = L.geoJson(data, {
     onEachFeature: function (feature, layer) {
-      var popupText = "Station: " + feature.properties.nom_gare + "<br>Prix : " + feature.properties.prix_moyen_2014 + " €/m²";
+      var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2014 : " + Number(parseFloat(feature.properties.prix_moyen_2014).toFixed(2));
       layer.bindPopup(popupText);
       layer.on({
-        mouseover: highlightStation
+        mouseover: highlightStation,
+        mouseout: resetHighlightStation
       });
     },
     pointToLayer: createCircles
@@ -78,11 +79,28 @@ function highlightFeature(e) {
 };
 
 function highlightStation(e) {
+  var layer = e.target;
+
   console.log(e);
-  
+
+  layer.setStyle({
+    color :'#F00'
+  });
+
+
 }
 
-function resetHighlight(e) {
+function resetHighlightStation(e) {
+  var layer = e.target;
+  var color = "#" + layer.feature.properties.route_color;
+
+  layer.setStyle({
+    color: '#666'
+  });
+
+};
+
+function resetHighlightLigne(e) {
   var layer = e.target;
   var color = "#" + layer.feature.properties.route_color;
 
@@ -99,7 +117,7 @@ function resetHighlight(e) {
 function createCircles(feature, latlng) {
   return L.circleMarker(latlng, {
     color: '#666',
-    radius: parseFloat(feature.properties.prix_moyen_2014) / 1000
+    radius: parseFloat(feature.properties.prix_moyen_2014) / 1800
   })
 };
 
