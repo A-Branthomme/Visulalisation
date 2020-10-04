@@ -40,21 +40,150 @@ $.getJSON("./api/ligne_metro.geojson", function (data) {
   dataLayer.addTo(map);
 });
 
-//Ajout des Stations
-$.getJSON("./api/Data_metro_avec_prix.geojson", function (data) {
-  var station_layer = L.geoJson(data, {
-    onEachFeature: function (feature, layer) {
-      var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2014 : " + Number(parseFloat(feature.properties.prix_moyen_2014).toFixed(2));
-      layer.bindPopup(popupText);
-      layer.on({
-        mouseover: highlightStation,
-        mouseout: resetHighlightStation
-      });
-    },
-    pointToLayer: createCircles
+//Load du geojson des stations
+var json = (function() {
+  var json = null;
+  $.ajax({
+    'async': false,
+    'global': false,
+    'url': "./api/Data_metro_avec_prix.geojson",
+    'dataType': "json",
+    'success': function(data) {
+      json = data;
+    }
   });
-  station_layer.addTo(map);
+  return json;
+})();
+
+//Ajout des Stations 2014
+var station_layer_2014 = L.geoJson(json, {
+  onEachFeature: function (feature, layer) {
+    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2014 : " + Number(parseFloat(feature.properties.prix_moyen_2014).toFixed(2));
+    layer.bindPopup(popupText);
+    layer.on({
+      mouseover: highlightStation,
+      mouseout: resetHighlightStation
+    });
+  },
+  pointToLayer: function createCircles(feature, latlng) {
+    return L.circleMarker(latlng, {
+      color: '#666',
+      radius: parseFloat(feature.properties.prix_moyen_2014) / 1800
+    })
+  }
 });
+station_layer_2014.addTo(map);
+
+//Ajout des Stations 2015
+var station_layer_2015 = L.geoJson(json, {
+  onEachFeature: function (feature, layer) {
+    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2015 : " + Number(parseFloat(feature.properties.prix_moyen_2015).toFixed(2));
+    layer.bindPopup(popupText);
+    layer.on({
+      mouseover: highlightStation,
+      mouseout: resetHighlightStation
+    });
+  },
+  pointToLayer: function createCircles(feature, latlng) {
+    return L.circleMarker(latlng, {
+      color: '#666',
+      radius: parseFloat(feature.properties.prix_moyen_2015) / 1800
+    })
+  }
+});
+station_layer_2015.addTo(map);
+
+//Ajout des Stations 2016
+var station_layer_2016 = L.geoJson(json, {
+  onEachFeature: function (feature, layer) {
+    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2016 : " + Number(parseFloat(feature.properties.prix_moyen_2016).toFixed(2));
+    layer.bindPopup(popupText);
+    layer.on({
+      mouseover: highlightStation,
+      mouseout: resetHighlightStation
+    });
+  },
+  pointToLayer: function createCircles(feature, latlng) {
+    return L.circleMarker(latlng, {
+      color: '#666',
+      radius: parseFloat(feature.properties.prix_moyen_2016) / 1800
+    })
+  }
+});
+station_layer_2016.addTo(map);
+
+//Ajout des Stations 2017
+var station_layer_2017 = L.geoJson(json, {
+  onEachFeature: function (feature, layer) {
+    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2017 : " + Number(parseFloat(feature.properties.prix_moyen_2017).toFixed(2));
+    layer.bindPopup(popupText);
+    layer.on({
+      mouseover: highlightStation,
+      mouseout: resetHighlightStation
+    });
+  },
+  pointToLayer: function createCircles(feature, latlng) {
+    return L.circleMarker(latlng, {
+      color: '#666',
+      radius: parseFloat(feature.properties.prix_moyen_2017) / 1800
+    })
+  }
+});
+station_layer_2017.addTo(map);
+
+//Ajout des Stations 2018
+var station_layer_2018 = L.geoJson(json, {
+  onEachFeature: function (feature, layer) {
+    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2018 : " + Number(parseFloat(feature.properties.prix_moyen_2018).toFixed(2));
+    layer.bindPopup(popupText);
+    layer.on({
+      mouseover: highlightStation,
+      mouseout: resetHighlightStation
+    });
+  },
+  pointToLayer: function createCircles(feature, latlng) {
+    return L.circleMarker(latlng, {
+      color: '#666',
+      radius: parseFloat(feature.properties.prix_moyen_2018) / 1800
+    })
+  }
+});
+station_layer_2018.addTo(map);
+
+//Ajout des Stations 2019
+var station_layer_2019 = L.geoJson(json, {
+  onEachFeature: function (feature, layer) {
+    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2019 : " + Number(parseFloat(feature.properties.prix_moyen_2019).toFixed(2));
+    layer.bindPopup(popupText);
+    layer.on({
+      mouseover: highlightStation,
+      mouseout: resetHighlightStation
+    });
+  },
+  pointToLayer: function createCircles(feature, latlng) {
+    return L.circleMarker(latlng, {
+      color: '#666',
+      radius: parseFloat(feature.properties.prix_moyen_2019) / 1800
+    })
+  }
+});
+station_layer_2019.addTo(map);
+
+var overlayMaps = {
+    "Background": myLayer,
+};
+
+var baseMaps = {
+    "2014": station_layer_2014,
+    "2015": station_layer_2015,
+    "2016": station_layer_2016,
+    "2017": station_layer_2017,
+    "2018": station_layer_2018,
+    "2019": station_layer_2019,
+
+};
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 function zoomToFeature(e) {
   map.fitBounds(e.target.getBounds());
@@ -121,16 +250,16 @@ function createCircles(feature, latlng) {
   })
 };
 
-var markersClusterCustomPlus = new L.MarkerClusterGroup({
-  iconCreateFunction: function (cluster) {
-    var digits = (cluster.getChildCount() + '').length;
-    return L.divIcon({
-      html: cluster.getChildCount(),
-      className: 'cluster digits-' + digits,
-      iconSize: null
-    });
-  }
-});
+// var markersClusterCustomPlus = new L.MarkerClusterGroup({
+//   iconCreateFunction: function (cluster) {
+//     var digits = (cluster.getChildCount() + '').length;
+//     return L.divIcon({
+//       html: cluster.getChildCount(),
+//       className: 'cluster digits-' + digits,
+//       iconSize: null
+//     });
+//   }
+// });
 
 // var years = [dataLayer, station_layer];
 // layerGroup = L.layerGroup(years);
