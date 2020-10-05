@@ -24,6 +24,10 @@ df_apts = df_apts.astype({'longitude': float, 'latitude': float, 'surface_reelle
 # calcul des prix au m2
 df_apts["Prix_m2"]= df_apts.valeur_fonciere_vraie / df_apts.surface_reelle_bati
 
+# nettoyage de la base
+df_apts=df_apts[df_apts["Prix_m2"] > 1000]
+df_apts=df_apts[df_apts["Prix_m2"] < 60000]
+
 # transformation de la DB en tableaux numpy
 apts = df_apts.to_numpy()
 df_metro = df_metro.sort_values(by=['gares_id'],axis=0)
@@ -32,6 +36,7 @@ metros = df_metro.to_numpy()
 metros_coord = metros[:,[7,8]]
 apts_coord = apts[:,[28,29]]
 apts_prix = apts[:,[31]]
+apts_annee = apts[:,[30]]
             
 # detection pour chaque station des appartements les plus proches (dans un rayon de dist_mean entre 2 stations)
 dist_mean = 571
@@ -46,7 +51,7 @@ for i in range(len(mat_distances)): #par appartement
         
 # On repasse le calcul dans une Database et on réassocie les années aux appartements    
 df_mat_prix = pd.DataFrame(mat_prix)
-df_apts_annee = df_apts.annee.to_frame()
+df_apts_annee = pd.DataFrame(apts_annee).rename(columns={0:'annee'})
 df_mat_prix = pd.concat([df_mat_prix,df_apts_annee], axis=1)
 
 # Calcul des moyennes de prix par station de métro et par année  
