@@ -169,11 +169,11 @@ var station_layer_2019 = L.geoJson(json, {
 });
 station_layer_2019.addTo(map);
 
-var overlayMaps = {
+var baseMaps = {
     "Background": myLayer,
 };
 
-var baseMaps = {
+var overlayMaps = {
     "2014": station_layer_2014,
     "2015": station_layer_2015,
     "2016": station_layer_2016,
