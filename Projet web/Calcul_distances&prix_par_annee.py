@@ -62,12 +62,27 @@ df_prix_2016 = df_mat_prix[df_mat_prix["annee"] == '2016'].mean().to_frame().ren
 df_prix_2017 = df_mat_prix[df_mat_prix["annee"] == '2017'].mean().to_frame().rename(columns={0:'prix_moyen_2017'})
 df_prix_2018 = df_mat_prix[df_mat_prix["annee"] == '2018'].mean().to_frame().rename(columns={0:'prix_moyen_2018'})
 df_prix_2019 = df_mat_prix[df_mat_prix["annee"] == '2019'].mean().to_frame().rename(columns={0:'prix_moyen_2019'})
+df_prix_moyen = (df_prix_2014.prix_moyen_2014 + df_prix_2015.prix_moyen_2015 + df_prix_2016.prix_moyen_2016 + df_prix_2017.prix_moyen_2017 + df_prix_2018.prix_moyen_2018 + df_prix_2019.prix_moyen_2019) / 6
+df_prix_moyen = df_prix_moyen.to_frame().rename(columns={0:'prix_moyen_global'})
 
 # Re-concaténation des matrices de prix avec la matrice métro initiale
-df_resultats = pd.concat([df_metro,df_prix_2014,df_prix_2015,df_prix_2016,df_prix_2017,df_prix_2018,df_prix_2019], axis=1)
+df_resultats = pd.concat([df_metro,df_prix_2014,df_prix_2015,df_prix_2016,df_prix_2017,df_prix_2018,df_prix_2019, df_prix_moyen], axis=1)
+df_resultats = df_resultats[df_resultats["prix_moyen_global"] > 0]
 
-# sauvegarde de la db
+# Création d'une base regroupé par station de métro
+df_station_groupees_global=df_resultats.groupby("nomlong")["prix_moyen_global"].mean().to_frame('prix_moyen_global').reset_index()
+df_station_groupees_2014=df_resultats.groupby("nomlong")["prix_moyen_2014"].mean().to_frame('prix_moyen_2014').reset_index()
+df_station_groupees_2015=df_resultats.groupby("nomlong")["prix_moyen_2015"].mean().to_frame('prix_moyen_2015').reset_index()
+df_station_groupees_2016=df_resultats.groupby("nomlong")["prix_moyen_2016"].mean().to_frame('prix_moyen_2016').reset_index()
+df_station_groupees_2017=df_resultats.groupby("nomlong")["prix_moyen_2017"].mean().to_frame('prix_moyen_2017').reset_index()
+df_station_groupees_2018=df_resultats.groupby("nomlong")["prix_moyen_2018"].mean().to_frame('prix_moyen_2018').reset_index()
+df_station_groupees_2019=df_resultats.groupby("nomlong")["prix_moyen_2019"].mean().to_frame('prix_moyen_2019').reset_index()
+df_station_groupees = pd.concat([df_station_groupees_2014,df_station_groupees_2015.prix_moyen_2015,df_station_groupees_2016.prix_moyen_2016,df_station_groupees_2017.prix_moyen_2017,df_station_groupees_2018.prix_moyen_2018, df_station_groupees_2019.prix_moyen_2019,df_station_groupees_global.prix_moyen_global], axis=1)
+
+# sauvegarde des db
 df_resultats.to_csv('Data_metro_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
+df_station_groupees.to_csv('Data_stations_groupees_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
+
 
 #test
 
