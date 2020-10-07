@@ -12,9 +12,9 @@ import numpy as np
 from scipy.spatial.distance import cdist
 
 # Load data
-os.chdir("./Data Paris/Appartements")
+os.chdir("/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web/Data Paris/Appartements")
 df_apts = pd.DataFrame(pd.read_csv('Data_appartements_reprojete.csv', delimiter=',', dtype = str))
-os.chdir("./Data Paris/Stations")
+os.chdir("/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web/Data Paris/Stations")
 df_metro = pd.DataFrame(pd.read_excel('stations_data_clean.xlsx'))
 df_apts["annee"]=df_apts.id_mutation.str.split('-')
 df_apts["annee"]=df_apts.id_mutation.str.split('-',expand=True)
