@@ -23,6 +23,7 @@ df_apts = df_apts.astype({'longitude': float, 'latitude': float, 'surface_reelle
 
 # calcul des prix au m2
 df_apts["Prix_m2"]= df_apts.valeur_fonciere_vraie / df_apts.surface_reelle_bati
+df_apts.to_csv('Data_apts_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
 
 # nettoyage de la base
 df_apts=df_apts[df_apts["Prix_m2"] > 1000]

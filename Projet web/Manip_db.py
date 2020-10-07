@@ -11,9 +11,9 @@ import numpy as np
 from scipy.spatial.distance import cdist
 
 # Load data
-os.chdir("/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web/Data Paris/Stations")
+os.chdir("./Data Paris/Stations")
 df_metro = pd.DataFrame(pd.read_excel('stations_data_clean.xlsx'))
-os.chdir("/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web/Data Paris/Appartements")
+os.chdir("./Data Paris/Appartements")
 df_Apts_2014 = pd.DataFrame(pd.read_csv('2014.csv', delimiter=',', dtype = str))
 df_Apts_2015 = pd.DataFrame(pd.read_csv('2015.csv', delimiter=',', dtype = str))
 df_Apts_2016 = pd.DataFrame(pd.read_csv('2016.csv', delimiter=',', dtype = str))
