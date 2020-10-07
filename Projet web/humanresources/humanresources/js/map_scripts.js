@@ -58,7 +58,7 @@ let zoom = 1500
 //Ajout des Stations 2014
 var station_layer_2014 = L.geoJson(json, {
   onEachFeature: function (feature, layer) {
-    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2014 : " + Number(parseFloat(feature.properties.prix_moyen_2014).toFixed(2));
+    var popupText = "<b>Station : </b>" + feature.properties.nom_gare + "<br><b>Prix 2014 : </b>" + Number(parseFloat(feature.properties.prix_moyen_2014).toFixed(2))+" €/m²";
     layer.bindPopup(popupText);
     layer.on({
       mouseover: highlightStation,
@@ -77,7 +77,7 @@ station_layer_2014.addTo(map);
 //Ajout des Stations 2015
 var station_layer_2015 = L.geoJson(json, {
   onEachFeature: function (feature, layer) {
-    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2015 : " + Number(parseFloat(feature.properties.prix_moyen_2015).toFixed(2));
+    var popupText = "<b>Station : </b>" + feature.properties.nom_gare + "<br><b>Prix 2015 : </b>" + Number(parseFloat(feature.properties.prix_moyen_2015).toFixed(2))+" €/m²";
     layer.bindPopup(popupText);
     layer.on({
       mouseover: highlightStation,
@@ -96,7 +96,7 @@ station_layer_2015.addTo(map);
 //Ajout des Stations 2016
 var station_layer_2016 = L.geoJson(json, {
   onEachFeature: function (feature, layer) {
-    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2016 : " + Number(parseFloat(feature.properties.prix_moyen_2016).toFixed(2));
+    var popupText = "<b>Station : </b>" + feature.properties.nom_gare + "<br><b>Prix 2016 : </b>" + Number(parseFloat(feature.properties.prix_moyen_2016).toFixed(2))+" €/m²";
     layer.bindPopup(popupText);
     layer.on({
       mouseover: highlightStation,
@@ -115,7 +115,7 @@ station_layer_2016.addTo(map);
 //Ajout des Stations 2017
 var station_layer_2017 = L.geoJson(json, {
   onEachFeature: function (feature, layer) {
-    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2017 : " + Number(parseFloat(feature.properties.prix_moyen_2017).toFixed(2));
+    var popupText = "<b>Station : </b>" + feature.properties.nom_gare + "<br><b>Prix 2017 : </b>" + Number(parseFloat(feature.properties.prix_moyen_2017).toFixed(2))+" €/m²";
     layer.bindPopup(popupText);
     layer.on({
       mouseover: highlightStation,
@@ -134,7 +134,7 @@ station_layer_2017.addTo(map);
 //Ajout des Stations 2018
 var station_layer_2018 = L.geoJson(json, {
   onEachFeature: function (feature, layer) {
-    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2018 : " + Number(parseFloat(feature.properties.prix_moyen_2018).toFixed(2));
+    var popupText = "<b>Station : </b>" + feature.properties.nom_gare + "<br><b>Prix 2018: </b>" + Number(parseFloat(feature.properties.prix_moyen_2018).toFixed(2))+" €/m²";
     layer.bindPopup(popupText);
     layer.on({
       mouseover: highlightStation,
@@ -153,7 +153,7 @@ station_layer_2018.addTo(map);
 //Ajout des Stations 2019
 var station_layer_2019 = L.geoJson(json, {
   onEachFeature: function (feature, layer) {
-    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2019 : " + Number(parseFloat(feature.properties.prix_moyen_2019).toFixed(2));
+    var popupText = "<b>Station : </b>" + feature.properties.nom_gare + "<br><b>Prix 2019 : </b>" + Number(parseFloat(feature.properties.prix_moyen_2019).toFixed(2)) +" €/m²";
     layer.bindPopup(popupText);
     layer.on({
       mouseover: highlightStation,
@@ -250,16 +250,6 @@ function createCircles(feature, latlng) {
   })
 };
 
-// var markersClusterCustomPlus = new L.MarkerClusterGroup({
-//   iconCreateFunction: function (cluster) {
-//     var digits = (cluster.getChildCount() + '').length;
-//     return L.divIcon({
-//       html: cluster.getChildCount(),
-//       className: 'cluster digits-' + digits,
-//       iconSize: null
-//     });
-//   }
-// });
 
 var years = [station_layer_2014, station_layer_2015];
 layerGroup = L.layerGroup(years);
