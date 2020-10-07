@@ -9,13 +9,18 @@ Created on Mon Sep 28 12:10:05 2020
 import os, csv
 import pandas as pd
 import numpy as np
+import math
 from scipy.spatial.distance import cdist
 
 # Load data
-os.chdir("./Data Paris/Appartements")
+dir_path = os.path.dirname(os.path.abspath(__file__))
+os.chdir(dir_path + "/Data Paris/Appartements")
 df_apts = pd.DataFrame(pd.read_csv('Data_appartements_reprojete.csv', delimiter=',', dtype = str))
-os.chdir("./Data Paris/Stations")
+os.chdir(dir_path + "/Data Paris/Stations")
 df_metro = pd.DataFrame(pd.read_excel('stations_data_clean.xlsx'))
+df_lignes_metro = pd.DataFrame(pd.read_csv('Data_lignes_metro.csv', delimiter=';', dtype = str))
+
+# Petites manipulations de la db
 df_apts["annee"]=df_apts.id_mutation.str.split('-')
 df_apts["annee"]=df_apts.id_mutation.str.split('-',expand=True)
 df_apts.valeur_fonciere_vraie = df_apts.valeur_fonciere_vraie.str.replace(",", ".")
@@ -23,11 +28,13 @@ df_apts = df_apts.astype({'longitude': float, 'latitude': float, 'surface_reelle
 
 # calcul des prix au m2
 df_apts["Prix_m2"]= df_apts.valeur_fonciere_vraie / df_apts.surface_reelle_bati
-df_apts.to_csv('Data_apts_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
+#df_apts.to_csv('Data_apts_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
 
-# nettoyage de la base
+# nettoyage des bases
 df_apts=df_apts[df_apts["Prix_m2"] > 1000]
 df_apts=df_apts[df_apts["Prix_m2"] < 60000]
+df_lignes_metro = df_lignes_metro.sort_values(by=['Station'],axis=0)
+df_lignes_metro = df_lignes_metro[['Station','Correspondance_1','Correspondance_2','Correspondance_3','Correspondance_4','Correspondance_5', 'Trafic']]
 
 # transformation de la DB en tableaux numpy
 apts = df_apts.to_numpy()
@@ -69,15 +76,26 @@ df_prix_moyen = df_prix_moyen.to_frame().rename(columns={0:'prix_moyen_global'})
 df_resultats = pd.concat([df_metro,df_prix_2014,df_prix_2015,df_prix_2016,df_prix_2017,df_prix_2018,df_prix_2019, df_prix_moyen], axis=1)
 df_resultats = df_resultats[df_resultats["prix_moyen_global"] > 0]
 
-# Création d'une base regroupé par station de métro
-df_station_groupees_global=df_resultats.groupby("nomlong")["prix_moyen_global"].mean().to_frame('prix_moyen_global').reset_index()
-df_station_groupees_2014=df_resultats.groupby("nomlong")["prix_moyen_2014"].mean().to_frame('prix_moyen_2014').reset_index()
-df_station_groupees_2015=df_resultats.groupby("nomlong")["prix_moyen_2015"].mean().to_frame('prix_moyen_2015').reset_index()
-df_station_groupees_2016=df_resultats.groupby("nomlong")["prix_moyen_2016"].mean().to_frame('prix_moyen_2016').reset_index()
-df_station_groupees_2017=df_resultats.groupby("nomlong")["prix_moyen_2017"].mean().to_frame('prix_moyen_2017').reset_index()
-df_station_groupees_2018=df_resultats.groupby("nomlong")["prix_moyen_2018"].mean().to_frame('prix_moyen_2018').reset_index()
-df_station_groupees_2019=df_resultats.groupby("nomlong")["prix_moyen_2019"].mean().to_frame('prix_moyen_2019').reset_index()
-df_station_groupees = pd.concat([df_station_groupees_2014,df_station_groupees_2015.prix_moyen_2015,df_station_groupees_2016.prix_moyen_2016,df_station_groupees_2017.prix_moyen_2017,df_station_groupees_2018.prix_moyen_2018, df_station_groupees_2019.prix_moyen_2019,df_station_groupees_global.prix_moyen_global], axis=1)
+# Création d'une nouvelle dbase regroupé par station de métro
+df_station_groupees_x = df_resultats.groupby("nomlong")["x"].mean().to_frame('x').reset_index().drop(columns={'nomlong'})
+df_station_groupees_y = df_resultats.groupby("nomlong")["y"].mean().to_frame('y').reset_index().drop(columns={'nomlong'})
+df_station_groupees_global = df_resultats.groupby("nomlong")["prix_moyen_global"].mean().to_frame('prix_moyen_global').reset_index()
+df_station_groupees_2014 = df_resultats.groupby("nomlong")["prix_moyen_2014"].mean().to_frame('prix_moyen_2014').reset_index()
+df_station_groupees_2015 = df_resultats.groupby("nomlong")["prix_moyen_2015"].mean().to_frame('prix_moyen_2015').reset_index()
+df_station_groupees_2016 = df_resultats.groupby("nomlong")["prix_moyen_2016"].mean().to_frame('prix_moyen_2016').reset_index()
+df_station_groupees_2017 = df_resultats.groupby("nomlong")["prix_moyen_2017"].mean().to_frame('prix_moyen_2017').reset_index()
+df_station_groupees_2018 = df_resultats.groupby("nomlong")["prix_moyen_2018"].mean().to_frame('prix_moyen_2018').reset_index()
+df_station_groupees_2019 = df_resultats.groupby("nomlong")["prix_moyen_2019"].mean().to_frame('prix_moyen_2019').reset_index()
+df_station_groupees = pd.concat([df_station_groupees_x, df_station_groupees_y, df_station_groupees_2014,df_station_groupees_2015.prix_moyen_2015,df_station_groupees_2016.prix_moyen_2016,df_station_groupees_2017.prix_moyen_2017,df_station_groupees_2018.prix_moyen_2018, df_station_groupees_2019.prix_moyen_2019,df_station_groupees_global.prix_moyen_global], axis=1)
+df_station_groupees = df_station_groupees.rename(columns={'nomlong':'Station'})
+
+# réassociation des lignes de métro aux stations de métro + Création d'une base de donnée Lignes
+df_station_groupees = pd.merge(df_station_groupees, df_lignes_metro, how = 'left', on = "Station")
+df_station_groupees["nb_lignes"]=5
+df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_5"].isnull()==True]=4
+df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_4"].isnull()==True]=3
+df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_3"].isnull()==True]=2
+df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_2"].isnull()==True]=1
 
 # sauvegarde des db
 df_resultats.to_csv('Data_metro_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
