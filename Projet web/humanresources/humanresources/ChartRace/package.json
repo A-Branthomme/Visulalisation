@@ -1,0 +1,14 @@
+{
+  "name": "3d934e3956bfff2c",
+  "main": "3d934e3956bfff2c@3019.js",
+  "version": "3019.0.0",
+  "homepage": "https://observablehq.com/d/3d934e3956bfff2c",
+  "author": {
+    "name": "minicapt",
+    "url": "https://observablehq.com/@minicapt"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

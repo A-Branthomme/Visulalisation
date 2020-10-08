@@ -134,7 +134,7 @@ station_layer_2017.addTo(map);
 //Ajout des Stations 2018
 var station_layer_2018 = L.geoJson(json, {
   onEachFeature: function (feature, layer) {
-    var popupText = "<b>Station : </b>" + feature.properties.nom_gare + "<br><b>Prix 2019 : </b>" + Number(parseFloat(feature.properties.prix_moyen_2019).toFixed(2))+" €/m²";
+    var popupText = "<b>Station : </b>" + feature.properties.nom_gare + "<br><b>Prix 2018 : </b>" + Number(parseFloat(feature.properties.prix_moyen_2019).toFixed(2))+" €/m²";
     layer.bindPopup(popupText);
     layer.on({
       mouseover: highlightStation,
@@ -153,7 +153,7 @@ station_layer_2018.addTo(map);
 //Ajout des Stations 2019
 var station_layer_2019 = L.geoJson(json, {
   onEachFeature: function (feature, layer) {
-    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br>Prix 2019 : " + Number(parseFloat(feature.properties.prix_moyen_2019).toFixed(2));
+    var popupText = "<b>Station: </b>" + feature.properties.nom_gare + "<br><b>Prix 2019 : </b>" + Number(parseFloat(feature.properties.prix_moyen_2019).toFixed(2))+" €/m²";
     layer.bindPopup(popupText);
     layer.on({
       mouseover: highlightStation,
