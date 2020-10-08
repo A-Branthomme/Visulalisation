@@ -31,8 +31,8 @@ df_apts["Prix_m2"]= df_apts.valeur_fonciere_vraie / df_apts.surface_reelle_bati
 #df_apts.to_csv('Data_apts_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
 
 # nettoyage des bases
-df_apts=df_apts[df_apts["Prix_m2"] > 1000]
-df_apts=df_apts[df_apts["Prix_m2"] < 60000]
+#df_apts=df_apts[df_apts["Prix_m2"] > 1000]
+#df_apts=df_apts[df_apts["Prix_m2"] < 60000]
 df_lignes_metro = df_lignes_metro.sort_values(by=['Station'],axis=0)
 df_lignes_metro = df_lignes_metro[['Station','Correspondance_1','Correspondance_2','Correspondance_3','Correspondance_4','Correspondance_5', 'Trafic']]
 
@@ -98,8 +98,8 @@ df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_3"].isnull(
 df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_2"].isnull()==True]=1
 
 # sauvegarde des db
-df_resultats.to_csv('Data_metro_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
-df_station_groupees.to_csv('Data_stations_groupees_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
+df_resultats.to_csv('Data_metro_avec_prix_SF.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
+df_station_groupees.to_csv('Data_stations_groupees_avec_prix_SF.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
 
 
 #test
