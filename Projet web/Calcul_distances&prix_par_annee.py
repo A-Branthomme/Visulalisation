@@ -201,7 +201,7 @@ df_bartchart = df_bartchart.astype({'annee': int, 'prix_moyen': int})
 # sauvegarde des db
 df_resultats.to_csv('Data_metro_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
 df_station_groupees.to_csv('Data_stations_groupees_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
-df_station_groupees.to_csv('Data_bartchart.csv', sep=',', encoding = "utf-8-sig", index = False, decimal = '.', quoting=csv.QUOTE_ALL, quotechar='"')
+df_bartchart.to_csv('Data_bartchart.csv', sep=',', encoding = "utf-8-sig", index = False, decimal = '.', quoting=csv.QUOTE_ALL, quotechar='"')
 
 #test
 
