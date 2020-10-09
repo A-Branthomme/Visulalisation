@@ -195,7 +195,7 @@ df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance
 df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance_3"].isnull()==True]=2
 df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance_2"].isnull()==True]=1
 
-df_bartchart = pd.concat([df_resultats_groupes_2019,df_resultats_groupes_2019,df_resultats_groupes_2019,df_resultats_groupes_2019,df_resultats_groupes_2019,df_resultats_groupes_2019], axis=0)
+df_bartchart = pd.concat([df_resultats_groupes_2014,df_resultats_groupes_2015,df_resultats_groupes_2016,df_resultats_groupes_2017,df_resultats_groupes_2018,df_resultats_groupes_2019], axis=0)
 df_bartchart = df_bartchart.astype({'annee': int, 'prix_moyen': int})
 
 # sauvegarde des db
