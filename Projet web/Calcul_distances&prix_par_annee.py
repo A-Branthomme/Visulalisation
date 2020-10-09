@@ -13,7 +13,8 @@ import math
 from scipy.spatial.distance import cdist
 
 # Load data
-dir_path = os.path.dirname(os.path.abspath(__file__))
+# dir_path = os.path.dirname(os.path.abspath(__file__))
+dir_path = "/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web"
 os.chdir(dir_path + "/Data Paris/Appartements")
 df_apts = pd.DataFrame(pd.read_csv('Data_appartements_reprojete.csv', delimiter=',', dtype = str))
 os.chdir(dir_path + "/Data Paris/Stations")
@@ -97,10 +98,110 @@ df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_4"].isnull(
 df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_3"].isnull()==True]=2
 df_station_groupees["nb_lignes"][df_station_groupees["Correspondance_2"].isnull()==True]=1
 
+# Création de la DB BartChart
+## 2014
+df_resultats_2014 = pd.concat([df_metro,df_prix_2014], axis=1)
+df_resultats_2014["annee"]=2014
+df_resultats_2014 = df_resultats_2014.rename(columns={'prix_moyen_2014':'prix_moyen'})
+df_resultats_prix_2014 = df_resultats_2014.groupby("nomlong")["prix_moyen"].mean().to_frame('prix_moyen').reset_index().drop(columns={'nomlong'})
+df_resultats_annee_2014 = df_resultats_2014.groupby("nomlong")["annee"].mean().to_frame('annee').reset_index()
+df_resultats_groupes_2014 = pd.concat([df_resultats_annee_2014, df_resultats_prix_2014], axis=1)
+df_resultats_groupes_2014 = df_resultats_groupes_2014[df_resultats_groupes_2014["prix_moyen"] > 0]
+df_resultats_groupes_2014 = df_resultats_groupes_2014.rename(columns={'nomlong':'Station'})
+df_resultats_groupes_2014 = pd.merge(df_resultats_groupes_2014, df_lignes_metro, how = 'left', on = "Station")
+df_resultats_groupes_2014["nb_lignes"]=5
+df_resultats_groupes_2014["nb_lignes"][df_resultats_groupes_2014["Correspondance_5"].isnull()==True]=4
+df_resultats_groupes_2014["nb_lignes"][df_resultats_groupes_2014["Correspondance_4"].isnull()==True]=3
+df_resultats_groupes_2014["nb_lignes"][df_resultats_groupes_2014["Correspondance_3"].isnull()==True]=2
+df_resultats_groupes_2014["nb_lignes"][df_resultats_groupes_2014["Correspondance_2"].isnull()==True]=1
+
+## 2015
+df_resultats_2015 = pd.concat([df_metro,df_prix_2015], axis=1)
+df_resultats_2015["annee"]=2015
+df_resultats_2015 = df_resultats_2015.rename(columns={'prix_moyen_2015':'prix_moyen'})
+df_resultats_prix_2015 = df_resultats_2015.groupby("nomlong")["prix_moyen"].mean().to_frame('prix_moyen').reset_index().drop(columns={'nomlong'})
+df_resultats_annee_2015 = df_resultats_2015.groupby("nomlong")["annee"].mean().to_frame('annee').reset_index()
+df_resultats_groupes_2015 = pd.concat([df_resultats_annee_2015, df_resultats_prix_2015], axis=1)
+df_resultats_groupes_2015 = df_resultats_groupes_2015[df_resultats_groupes_2015["prix_moyen"] > 0]
+df_resultats_groupes_2015 = df_resultats_groupes_2015.rename(columns={'nomlong':'Station'})
+df_resultats_groupes_2015 = pd.merge(df_resultats_groupes_2015, df_lignes_metro, how = 'left', on = "Station")
+df_resultats_groupes_2015["nb_lignes"]=5
+df_resultats_groupes_2015["nb_lignes"][df_resultats_groupes_2015["Correspondance_5"].isnull()==True]=4
+df_resultats_groupes_2015["nb_lignes"][df_resultats_groupes_2015["Correspondance_4"].isnull()==True]=3
+df_resultats_groupes_2015["nb_lignes"][df_resultats_groupes_2015["Correspondance_3"].isnull()==True]=2
+df_resultats_groupes_2015["nb_lignes"][df_resultats_groupes_2015["Correspondance_2"].isnull()==True]=1
+
+## 2016
+df_resultats_2016 = pd.concat([df_metro,df_prix_2016], axis=1)
+df_resultats_2016["annee"]=2016
+df_resultats_2016 = df_resultats_2016.rename(columns={'prix_moyen_2016':'prix_moyen'})
+df_resultats_prix_2016 = df_resultats_2016.groupby("nomlong")["prix_moyen"].mean().to_frame('prix_moyen').reset_index().drop(columns={'nomlong'})
+df_resultats_annee_2016 = df_resultats_2016.groupby("nomlong")["annee"].mean().to_frame('annee').reset_index()
+df_resultats_groupes_2016 = pd.concat([df_resultats_annee_2016, df_resultats_prix_2016], axis=1)
+df_resultats_groupes_2016 = df_resultats_groupes_2016[df_resultats_groupes_2016["prix_moyen"] > 0]
+df_resultats_groupes_2016 = df_resultats_groupes_2016.rename(columns={'nomlong':'Station'})
+df_resultats_groupes_2016 = pd.merge(df_resultats_groupes_2016, df_lignes_metro, how = 'left', on = "Station")
+df_resultats_groupes_2016["nb_lignes"]=5
+df_resultats_groupes_2016["nb_lignes"][df_resultats_groupes_2016["Correspondance_5"].isnull()==True]=4
+df_resultats_groupes_2016["nb_lignes"][df_resultats_groupes_2016["Correspondance_4"].isnull()==True]=3
+df_resultats_groupes_2016["nb_lignes"][df_resultats_groupes_2016["Correspondance_3"].isnull()==True]=2
+df_resultats_groupes_2016["nb_lignes"][df_resultats_groupes_2016["Correspondance_2"].isnull()==True]=1
+
+## 2017
+df_resultats_2017 = pd.concat([df_metro,df_prix_2017], axis=1)
+df_resultats_2017["annee"]=2017
+df_resultats_2017 = df_resultats_2017.rename(columns={'prix_moyen_2017':'prix_moyen'})
+df_resultats_prix_2017 = df_resultats_2017.groupby("nomlong")["prix_moyen"].mean().to_frame('prix_moyen').reset_index().drop(columns={'nomlong'})
+df_resultats_annee_2017 = df_resultats_2017.groupby("nomlong")["annee"].mean().to_frame('annee').reset_index()
+df_resultats_groupes_2017 = pd.concat([df_resultats_annee_2017, df_resultats_prix_2017], axis=1)
+df_resultats_groupes_2017 = df_resultats_groupes_2017[df_resultats_groupes_2017["prix_moyen"] > 0]
+df_resultats_groupes_2017 = df_resultats_groupes_2017.rename(columns={'nomlong':'Station'})
+df_resultats_groupes_2017 = pd.merge(df_resultats_groupes_2017, df_lignes_metro, how = 'left', on = "Station")
+df_resultats_groupes_2017["nb_lignes"]=5
+df_resultats_groupes_2017["nb_lignes"][df_resultats_groupes_2017["Correspondance_5"].isnull()==True]=4
+df_resultats_groupes_2017["nb_lignes"][df_resultats_groupes_2017["Correspondance_4"].isnull()==True]=3
+df_resultats_groupes_2017["nb_lignes"][df_resultats_groupes_2017["Correspondance_3"].isnull()==True]=2
+df_resultats_groupes_2017["nb_lignes"][df_resultats_groupes_2017["Correspondance_2"].isnull()==True]=1
+
+## 2018
+df_resultats_2018 = pd.concat([df_metro,df_prix_2018], axis=1)
+df_resultats_2018["annee"]=2018
+df_resultats_2018 = df_resultats_2018.rename(columns={'prix_moyen_2018':'prix_moyen'})
+df_resultats_prix_2018 = df_resultats_2018.groupby("nomlong")["prix_moyen"].mean().to_frame('prix_moyen').reset_index().drop(columns={'nomlong'})
+df_resultats_annee_2018 = df_resultats_2018.groupby("nomlong")["annee"].mean().to_frame('annee').reset_index()
+df_resultats_groupes_2018 = pd.concat([df_resultats_annee_2018, df_resultats_prix_2018], axis=1)
+df_resultats_groupes_2018 = df_resultats_groupes_2018[df_resultats_groupes_2018["prix_moyen"] > 0]
+df_resultats_groupes_2018 = df_resultats_groupes_2018.rename(columns={'nomlong':'Station'})
+df_resultats_groupes_2018 = pd.merge(df_resultats_groupes_2018, df_lignes_metro, how = 'left', on = "Station")
+df_resultats_groupes_2018["nb_lignes"]=5
+df_resultats_groupes_2018["nb_lignes"][df_resultats_groupes_2018["Correspondance_5"].isnull()==True]=4
+df_resultats_groupes_2018["nb_lignes"][df_resultats_groupes_2018["Correspondance_4"].isnull()==True]=3
+df_resultats_groupes_2018["nb_lignes"][df_resultats_groupes_2018["Correspondance_3"].isnull()==True]=2
+df_resultats_groupes_2018["nb_lignes"][df_resultats_groupes_2018["Correspondance_2"].isnull()==True]=1
+
+## 2019
+df_resultats_2019 = pd.concat([df_metro,df_prix_2019], axis=1)
+df_resultats_2019["annee"]=2019
+df_resultats_2019 = df_resultats_2019.rename(columns={'prix_moyen_2019':'prix_moyen'})
+df_resultats_prix_2019 = df_resultats_2019.groupby("nomlong")["prix_moyen"].mean().to_frame('prix_moyen').reset_index().drop(columns={'nomlong'})
+df_resultats_annee_2019 = df_resultats_2019.groupby("nomlong")["annee"].mean().to_frame('annee').reset_index()
+df_resultats_groupes_2019 = pd.concat([df_resultats_annee_2019, df_resultats_prix_2019], axis=1)
+df_resultats_groupes_2019 = df_resultats_groupes_2019[df_resultats_groupes_2019["prix_moyen"] > 0]
+df_resultats_groupes_2019 = df_resultats_groupes_2019.rename(columns={'nomlong':'Station'})
+df_resultats_groupes_2019 = pd.merge(df_resultats_groupes_2019, df_lignes_metro, how = 'left', on = "Station")
+df_resultats_groupes_2019["nb_lignes"]=5
+df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance_5"].isnull()==True]=4
+df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance_4"].isnull()==True]=3
+df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance_3"].isnull()==True]=2
+df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance_2"].isnull()==True]=1
+
+df_bartchart = pd.concat([df_resultats_groupes_2019,df_resultats_groupes_2019,df_resultats_groupes_2019,df_resultats_groupes_2019,df_resultats_groupes_2019,df_resultats_groupes_2019], axis=0)
+df_bartchart = df_bartchart.astype({'annee': int, 'prix_moyen': int})
+
 # sauvegarde des db
 df_resultats.to_csv('Data_metro_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
 df_station_groupees.to_csv('Data_stations_groupees_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
-
+df_station_groupees.to_csv('Data_bartchart.csv', sep=',', encoding = "utf-8-sig", index = False, decimal = '.', quoting=csv.QUOTE_ALL, quotechar='"')
 
 #test
 
