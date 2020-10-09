@@ -1,21 +1,6 @@
-export default function define(runtime, observer) {
-  const main = runtime.module();
-  const fileAttachments = new Map([["category-brands.csv",new URL("./files/aec3792837253d4c6168f9bbecdf495140a5f9bb1cdb12c7c8113cec26332634a71ad29b446a1e8236e0a45732ea5d0b4e86d9d1568ff5791412f093ec06f4f1",import.meta.url)]]);
-  main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
-  main.variable().define("data", ["d3","FileAttachment"], async function(d3,FileAttachment){return(
-d3.csvParse(await FileAttachment("category-brands.csv").text(), d3.autoType)
-)});
-  main.variable(observer("viewof replay")).define("viewof replay", ["html"], function(html){return(
-html`<button>Replay`
-)});
-  main.variable().define("replay", ["Generators", "viewof replay"], (G, _) => G.input(_));
-  main.variable(observer("title")).define("title", ["md"], function(md){return(
-md`## Stations les plus chères
+data = d3.csvParse(await FileAttachment("C:/Users/amo19/Downloads/category-brands.csv").text(), d3.autoType);
 
-Données en €/m²; La couleur indique la ligne. Source des données: [data.gouv](https://www.interbrand.com/best-brands/)`
-)});
-  main.variable(observer("chart")).define("chart", ["replay","d3","width","height","bars","axis","labels","ticker","keyframes","duration","x","invalidation"], async function*(replay,d3,width,height,bars,axis,labels,ticker,keyframes,duration,x,invalidation)
-{
+chart = {
   replay;
 
   const svg = d3.create("svg")
@@ -44,44 +29,38 @@ Données en €/m²; La couleur indique la ligne. Source des données: [data.gou
     invalidation.then(() => svg.interrupt());
     await transition.end();
   }
-}
-);
-  main.variable().define("duration", function(){return(
-250
-)});
-  main.variable().define(["d3","data"], function(d3,data){return(
-d3.group(data, d => d.name)
-)});
-  main.variable().define(["data"], function(data){return(
-data.filter(d => d.name === "Heineken")
-)});
-  main.variable().define("n", function(){return(
-12
-)});
-  main.variable().define("names", ["data"], function(data){return(
-new Set(data.map(d => d.name))
-)});
-  main.variable().define("datevalues", ["d3","data"], function(d3,data){return(
-Array.from(d3.rollup(data, ([d]) => d.value, d => +d.date, d => d.name))
+};
+
+//Durée entre chaque frame en ms
+var duration = 250;
+
+//On crée des groupes pour chaque nom
+d3.group(data, d => d.name);
+
+//Variable qui gère le nombre de barre à afficher sur le chart
+var n=12;
+
+//Variable contenant les noms de toutes les stations
+names = new Set(data.map(d => d.name));
+
+//
+datevalues = Array.from(d3.rollup(data, ([d]) => d.value, d => +d.date, d => d.name))
   .map(([date, data]) => [new Date(date), data])
-  .sort(([a], [b]) => d3.ascending(a, b))
-)});
-  main.variable().define("rank", ["names","d3","n"], function(names,d3,n){return(
+  .sort(([a], [b]) => d3.ascending(a, b));
+
+// Fonction qui calcule le rang
 function rank(value) {
   const data = Array.from(names, name => ({name, value: value(name)}));
   data.sort((a, b) => d3.descending(a.value, b.value));
   for (let i = 0; i < data.length; ++i) data[i].rank = Math.min(n, i);
   return data;
-}
-)});
-  main.variable().define(["rank","datevalues"], function(rank,datevalues){return(
-rank(name => datevalues[0][1].get(name))
-)});
-  main.variable().define("k", function(){return(
-10
-)});
-  main.variable().define("keyframes", ["d3","datevalues","k","rank"], function(d3,datevalues,k,rank)
-{
+};
+
+//
+var k = 10;
+
+// variable qui contient le rang de toutes les stations à chaque instant
+keyframes = {
   const keyframes = [];
   let ka, a, kb, b;
   for ([[ka, a], [kb, b]] of d3.pairs(datevalues)) {
@@ -95,18 +74,16 @@ rank(name => datevalues[0][1].get(name))
   }
   keyframes.push([new Date(kb), rank(name => b.get(name) || 0)]);
   return keyframes;
-}
-);
-  main.variable().define("nameframes", ["d3","keyframes"], function(d3,keyframes){return(
-d3.groups(keyframes.flatMap(([, data]) => data), d => d.name)
-)});
-  main.variable().define("prev", ["nameframes","d3"], function(nameframes,d3){return(
-new Map(nameframes.flatMap(([, data]) => d3.pairs(data, (a, b) => [b, a])))
-)});
-  main.variable().define("next", ["nameframes","d3"], function(nameframes,d3){return(
-new Map(nameframes.flatMap(([, data]) => d3.pairs(data)))
-)});
-  main.variable().define("bars", ["n","color","y","x","prev","next"], function(n,color,y,x,prev,next){return(
+};
+
+//
+nameframes = d3.groups(keyframes.flatMap(([, data]) => data), d => d.name);
+
+prev = new Map(nameframes.flatMap(([, data]) => d3.pairs(data, (a, b) => [b, a])));
+
+next = new Map(nameframes.flatMap(([, data]) => d3.pairs(data)));
+
+//Bars
 function bars(svg) {
   let bar = svg.append("g")
       .attr("fill-opacity", 0.6)
@@ -129,9 +106,9 @@ function bars(svg) {
     .call(bar => bar.transition(transition)
       .attr("y", d => y(d.rank))
       .attr("width", d => x(d.value) - x(0)));
-}
-)});
-  main.variable().define("labels", ["n","x","prev","y","next","textTween"], function(n,x,prev,y,next,textTween){return(
+};
+
+//labels
 function labels(svg) {
   let label = svg.append("g")
       .style("font", "bold 12px var(--sans-serif)")
@@ -161,20 +138,18 @@ function labels(svg) {
     .call(bar => bar.transition(transition)
       .attr("transform", d => `translate(${x(d.value)},${y(d.rank)})`)
       .call(g => g.select("tspan").tween("text", d => textTween((prev.get(d) || d).value, d.value))))
-}
-)});
-  main.variable().define("textTween", ["d3","formatNumber"], function(d3,formatNumber){return(
+};
+
+formatNumber = d3.format(",d");
+
 function textTween(a, b) {
   const i = d3.interpolateNumber(a, b);
   return function(t) {
     this.textContent = formatNumber(i(t));
   };
-}
-)});
-  main.variable().define("formatNumber", ["d3"], function(d3){return(
-d3.format(",d")
-)});
-  main.variable().define("axis", ["margin","d3","x","width","barSize","n","y"], function(margin,d3,x,width,barSize,n,y){return(
+};
+
+//Axis
 function axis(svg) {
   const g = svg.append("g")
       .attr("transform", `translate(0,${margin.top})`);
@@ -190,9 +165,11 @@ function axis(svg) {
     g.selectAll(".tick:not(:first-of-type) line").attr("stroke", "white");
     g.select(".domain").remove();
   };
-}
-)});
-  main.variable().define("ticker", ["barSize","width","margin","n","formatDate","keyframes"], function(barSize,width,margin,n,formatDate,keyframes){return(
+};
+
+//Ticker (année en bas du graph)
+formatDate = d3.utcFormat("%Y");
+
 function ticker(svg) {
   const now = svg.append("text")
       .style("font", `bold ${barSize}px var(--sans-serif)`)
@@ -206,13 +183,10 @@ function ticker(svg) {
   return ([date], transition) => {
     transition.end().then(() => now.text(formatDate(date)));
   };
-}
-)});
-  main.variable().define("formatDate", ["d3"], function(d3){return(
-d3.utcFormat("%Y")
-)});
-  main.variable().define("color", ["d3","data"], function(d3,data)
-{
+};
+
+//Color
+color = {
   const scale = d3.scaleOrdinal(d3.schemeTableau10);
   if (data.some(d => d.category !== undefined)) {
     const categoryByName = new Map(data.map(d => [d.name, d.category]))
@@ -220,28 +194,20 @@ d3.utcFormat("%Y")
     return d => scale(categoryByName.get(d.name));
   }
   return d => scale(d.name);
-}
-);
-  main.variable().define("x", ["d3","margin","width"], function(d3,margin,width){return(
-d3.scaleLinear([0, 1], [margin.left, width - margin.right])
-)});
-  main.variable().define("y", ["d3","n","margin","barSize"], function(d3,n,margin,barSize){return(
-d3.scaleBand()
+};
+
+//Position
+x = d3.scaleLinear([0, 1], [margin.left, width - margin.right]);
+
+y = d3.scaleBand()
     .domain(d3.range(n + 1))
     .rangeRound([margin.top, margin.top + barSize * (n + 1 + 0.1)])
-    .padding(0.1)
-)});
-  main.variable().define("height", ["margin","barSize","n"], function(margin,barSize,n){return(
-margin.top + barSize * n + margin.bottom
-)});
-  main.variable().define("barSize", function(){return(
-48
-)});
-  main.variable().define("margin", function(){return(
-{top: 16, right: 6, bottom: 6, left: 0}
-)});
-  main.variable().define("d3", ["require"], function(require){return(
-require("d3@6")
-)});
-  return main;
-}
+    .padding(0.1);
+
+height = margin.top + barSize * n + margin.bottom;
+
+barSize = 48;
+
+margin = ({top: 16, right: 6, bottom: 6, left: 0});
+
+d3 = require("d3@6");
