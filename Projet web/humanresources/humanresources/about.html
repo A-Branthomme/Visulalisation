@@ -59,92 +59,134 @@
     </div> <!-- .templateux-cover -->
 
 
+        <div class="container templateux-section">
+          <div class="row">
+            <div class="col-12 col-md-7 mx-auto text-center mb-5">
+              <h2>Introduction</h2>
+            </div>
+            <div align="justify">
+              <p>
+                Afin de répondre à notre problématique, nous avons choisi de réaliser deux visualisations. La première, à l'échelle plus macro, est une carte de Paris intramuros dans laquelle nous observons les lignes de métro, les stations de métro ainsi que le prix des appartements à proximité de ces stations, pour les années 2014 à 2019. La deuxième, plus analytique, est un BarChart Race, et nous indique le classement évolutif des stations de métro pour lesquelles l'immobilier est le plus cher, de 2014 à 2019.
+              </p>
+              <p>
+                La donnée principale étudiée dans cette analyse est le prix moyen des ventes d'appartements parisiens. Pour chaque année, une valeur moyenne en €/m² est associée à chaque station de métro, et correspond à la moyenne des prix d'appartements se situant dans un rayon de 570m autour de cette station (distance moyenne entre 2 stations de métro à Paris).
+              </p>
+              <p>
+                Sont détaillés par la suite les technologies ont utilisées pour traiter les données, réaliser le site internet et créer les visuels. Une explication détaillée des données et des calculs est également fournie dans cette partie. </p>
+            </div>
+          </div>
+        </div> <!-- .templateux-section -->
 
     <div class="templateux-section">
 
       <div class="container"  data-aos="fade-up">
         <div class="row">
           <div class="col-lg-7">
-            <h2 class="mb-5">Our Agency</h2>
-            <div class="owl-carousel wide-slider">
-              <div class="item">
-                <img src="images/slider-1.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
-              </div>
-              <div class="item">
-                <img src="images/slider-2.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
-              </div>
-              <div class="item">
-                <img src="images/slider-3.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
-              </div>
-            </div> <!-- .owl-carousel -->
-          </div>
-          <div class="col-lg-5 pl-lg-5">
-            <h2 class="mb-5">Why Us?</h2>
+            <h2 class="mb-5">Technologies utilisées</h2>
             <div class="accordion" id="accordionExample">
-
-
               <div class="accordion-item">
                 <h2 class="mb-0 rounded mb-2">
                   <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Provident alias</a>
+                  Manipulation des données</a>
                 </h2>
-
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, <a href="#">Cnsectetur adipisicing</a> elit. Eos quos incidunt, perspiciatis, ad saepe, magnam error adipisci vitae ut provident alias! Odio debitis error ipsum molestiae voluptas accusantium quibusdam animi, soluta explicabo asperiores aliquid, modi natus suscipit deleniti. Corrupti, autem.</p>
+                    <p>La manipulation des différentes Database, le nettoyage des données, les tests ainsi que les calculs ont été réalisés avec <a href="#">Python 3</a> et <a href="#">Excel</a>. Le traitement des données à grandes échelle a pu être réalisée grace à la librairie <a href="#">Pandas</a> de Python, qui propose en particulier des structures de données et des opérations de manipulation de tableaux numériques.</p>
+                    <img src="images/Icones/Python.png" alt="" height="50px" width="200px" />
+                    <img src="images/Icones/Pandas.png" alt="" height="50px" width="150px" />
+                    <img src="images/Icones/Excel.png" alt="" height="50px" width="120px" />
                   </div>
                 </div>
               </div>
-              
+
               <div class="accordion-item">
                 <h2 class="mb-0 rounded mb-2">
                   <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Debitis ad similique tempore
-                  </a>
-                </h2>
-                
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat voluptate animi hic quasi sequi odio, vitae dolorum soluta sapiente debitis ad similique tempore, aliquam quae nam deserunt dicta ullam perspiciatis minima, quam. Quis repellat corporis aperiam, veritatis nemo iure inventore.</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="accordion-item">
-                <h2 class="mb-0 rounded mb-2">
-                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Lorem ipsum dolor sit amet
-                  </a>
-                </h2>
-                
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum et dolorum libero consequuntur facere molestias beatae quod labore quidem ad quasi eius pariatur quae nam quo soluta optio dicta, doloribus ullam fugit nulla! Itaque necessitatibus eum sed quam eos id!</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="accordion-item">
-                <h2 class="mb-0 rounded mb-2">
-                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    Modi natus suscipit
+                  Visualisations
                   </a>
                 </h2>
 
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="accordion-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos quos incidunt, perspiciatis, ad saepe, magnam error adipisci vitae ut provident alias! Odio debitis error ipsum molestiae voluptas accusantium quibusdam animi, soluta explicabo asperiores aliquid, modi natus suscipit deleniti. Corrupti, autem.</p>
+                    <p>La première visualisation a été réalisé avec <a href="#">Leaflet</a> qui est une bibliothèse JavaScript de cartographie en ligne développée par Vladimir Agafonkin de CloudMade et de nombreux contributeurs.  </p>
+                    <center>
+                     <img src="images/Icones/Leaflet.png" alt="" height="80px" width="150px"/>
+                    </center>
+                    <p>La seconde visualisation a été réalisé avec <a href="#">D3.js</a> qui est également une bibliothèque graphique JavaScript qui permet l'affichage de données numériques sous une forme graphique et dynamique. </p>
+                    <center>
+                     <img src="images/Icones/d3js.png" alt="" height="150px" width="150px" />
+                   </center>
                   </div>
                 </div>
               </div>
-              
+
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Technologies web
+                  </a>
+                </h2>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>Le site internet a été réalisé en <a href="#">CSS</a> et en <a href="#">HTML</a>. </p>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            </div> <!-- .owl-carousel -->
+          </div>
+          <div class="col-lg-5 pl-lg-5">
+            <h2 class="mb-5">Les données</h2>
+            <div class="accordion" id="accordionExample2">
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" data-toggle="collapse" data-target="#collapseOneBis" aria-expanded="true" aria-controls="collapseOneBis">
+                  Datasets</a>
+                </h2>
+
+                <div id="collapseOneBis" class="collapse show" aria-labelledby="headingOneBis" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p> Les données proviennent de 3 bases de données distinctes:</p>
+                    <ul>
+                      <li> La première est la base de données des transactions immobilières réalisées dans Paris de 2014 à 2019. On y retrouve l'ensemble des informations concernant les biens: localisation, prix, taille, date de vente, etc. Ce dataset a été récupéré sur le site internet https://cadastre.data.gouv.fr</li>
+                      <li> La seconde est la base de données des emplacements de bouches de station de métro. On y retrouve le nom des stations de métro, les différentes entrées/sorties et leur localisation. Ce dataset a été récupéré sur le site internet https://data.iledefrance-mobilites.fr/explore/dataset/emplacement-des-gares-idf/table/ </li>
+                      <li> La troisième est la base de données des stations de métro et lignes correspondantes. Cette dernière permet de lier les stations de métro aux lignes qui la traverse. Ce dataset a été récupéré sur le site internet https://dataratp2.opendatasoft.com/explore/dataset/trafic-annuel-entrant-par-station-du-reseau-ferre-2019/information/</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="mb-0 rounded mb-2">
+                  <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwoBis" aria-expanded="false" aria-controls="collapseTwoBis">
+                    Nettoyage des données et choix pour la visualisation
+                  </a>
+                </h2>
+
+                <div id="collapseTwoBis" class="collapse" aria-labelledby="headingTwoBis" data-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>Les données immobilières ont été restreintes aux ventes d'appartements dans Paris intramuros. </p>
+                    <p>Les données de métro ont été filtrées sur les stations dans lesquelles passent des lignes de métro (et non RER, trains, etc.), uniquement dans Paris intramuros. </p>
+                    <p>Des calculs matriciels de distances ont dû être nécessaires afin d'associer les appartements aux différentes stations de métro. Celà a pu être possible en utilisant les valeurs de longitude et de latitude. La règle définie est la suivante: si l'appartement est à moins de 570m de la station de métro (distance moyenne entre 2 stations parisiennes), alors il est pris en compte dans le calcul du prix moyen pour cette station.</p>
+                    <p>Ne possédant que les coordonnées géométriques des bouches de métro (et non des stations), nous avons décider de définir le centre de la station comme étant le barycentre de ses différentes bouches de métro.</p>
+                    <p>Un filtrage global a été réalisé sur les données incomplètes et erronées (notamment sur les valeurs de prix au m²). Aussi, certaines valeurs ponctuelles et abérantes faussant les calculs de moyennes ont été retirées.</p>
+                    <p></p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div> <!-- .templateux-section -->
 
-    
+
 
     <div class="templateux-section pb-0">
       <div class="container">
@@ -159,7 +201,7 @@
         <div class="row">
           <div class="col-md">
             <div class="templateux-counter text-center">
-              <span class="templateux-number" data-number="303">0</span>
+              <span class="templateux-number" data-number="302">0</span>
               <span class="templateux-label">Stations</span>
             </div>
           </div>
@@ -192,7 +234,7 @@
 
     </div>
 
-    
+
 
     <footer class="templateux-footer bg-light">
       <div class="container">
@@ -206,14 +248,13 @@
 
       </div>
     </footer>  <!-- .templateux-footer -->
-    
-    
+
+
     </div> <!-- .js-animsition -->
-    
-    
+
+
     <script src="js/scripts-all.js"></script>
     <script src="js/main.js"></script>
-    
+
     </body>
     </html>
-    
