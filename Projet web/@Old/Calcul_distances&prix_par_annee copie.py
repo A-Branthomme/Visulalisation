@@ -146,7 +146,6 @@ df_resultats_groupes_2016["nb_lignes"][df_resultats_groupes_2016["Correspondance
 df_resultats_groupes_2016["nb_lignes"][df_resultats_groupes_2016["Correspondance_4"].isnull()==True]=3
 df_resultats_groupes_2016["nb_lignes"][df_resultats_groupes_2016["Correspondance_3"].isnull()==True]=2
 df_resultats_groupes_2016["nb_lignes"][df_resultats_groupes_2016["Correspondance_2"].isnull()==True]=1
-df_resultats_groupes_2016 = df_resultats_groupes_2016[df_resultats_groupes_2016["Station"] != "PORTE D'IVRY"]
 
 ## 2017
 df_resultats_2017 = pd.concat([df_metro,df_prix_2017], axis=1)
@@ -198,11 +197,6 @@ df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance
 
 df_bartchart = pd.concat([df_resultats_groupes_2014,df_resultats_groupes_2015,df_resultats_groupes_2016,df_resultats_groupes_2017,df_resultats_groupes_2018,df_resultats_groupes_2019], axis=0)
 df_bartchart = df_bartchart.astype({'annee': int, 'prix_moyen': int})
-
-# Filtrage de données abérantes
-df_bartchart = df_bartchart[df_bartchart["Station"] != "PIERRE CURIE"]
-df_station_groupees = df_station_groupees[df_station_groupees["Station"] != "PIERRE CURIE"]
-df_resultats = df_resultats[df_resultats["nomlong"] != "PIERRE CURIE"]
 
 # sauvegarde des db
 df_resultats.to_csv('Data_metro_avec_prix.csv', sep=';', encoding = "utf-8-sig", index = False, decimal = ',', quoting=csv.QUOTE_ALL, quotechar='"')
