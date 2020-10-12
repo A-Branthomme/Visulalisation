@@ -26061,3 +26061,11 @@ textarea.form-control {
 .accordion .accordion-item .accordion-body p:last-child {
 	margin-bottom: 0
 }
+
+.center {
+	text-align: center;
+}
+
+.justify {
+	text-align: justify;
+}
