@@ -67,7 +67,7 @@ var station_layer_2014 = L.geoJson(json, {
   },
   pointToLayer: function createCircles(feature, latlng) {
     return L.circleMarker(latlng, {
-      color: '#666',
+      color: '#A2D9FF',
       radius: parseFloat(feature.properties.prix_moyen_2014) / zoom
     })
   }
@@ -86,7 +86,7 @@ var station_layer_2015 = L.geoJson(json, {
   },
   pointToLayer: function createCircles(feature, latlng) {
     return L.circleMarker(latlng, {
-      color: '#666',
+      color: '#89C0FF',
       radius: parseFloat(feature.properties.prix_moyen_2015) / zoom
     })
   }
@@ -105,7 +105,7 @@ var station_layer_2016 = L.geoJson(json, {
   },
   pointToLayer: function createCircles(feature, latlng) {
     return L.circleMarker(latlng, {
-      color: '#666',
+      color: '#70A7E6',
       radius: parseFloat(feature.properties.prix_moyen_2016) / zoom
     })
   }
@@ -124,7 +124,7 @@ var station_layer_2017 = L.geoJson(json, {
   },
   pointToLayer: function createCircles(feature, latlng) {
     return L.circleMarker(latlng, {
-      color: '#666',
+      color: '#568DCC',
       radius: parseFloat(feature.properties.prix_moyen_2017) / zoom
     })
   }
@@ -143,7 +143,7 @@ var station_layer_2018 = L.geoJson(json, {
   },
   pointToLayer: function createCircles(feature, latlng) {
     return L.circleMarker(latlng, {
-      color: '#666',
+      color: '#3D74B3',
       radius: parseFloat(feature.properties.prix_moyen_2018) / zoom
     })
   }
@@ -162,7 +162,7 @@ var station_layer_2019 = L.geoJson(json, {
   },
   pointToLayer: function createCircles(feature, latlng) {
     return L.circleMarker(latlng, {
-      color: '#666',
+      color: '#235A99',
       radius: parseFloat(feature.properties.prix_moyen_2019) / zoom
     })
   }
