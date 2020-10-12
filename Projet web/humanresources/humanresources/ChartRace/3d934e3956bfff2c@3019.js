@@ -57,7 +57,7 @@ d3.group(data, d => d.name)
 data.filter(d => d.name === "Heineken")
 )});
   main.variable().define("n", function(){return(
-20
+10
 )});
   main.variable().define("names", ["data"], function(data){return(
 new Set(data.map(d => d.name))
