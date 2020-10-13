@@ -201,6 +201,7 @@ df_bartchart["annee_temp"]=df_bartchart["annee"].astype({'annee': str})
 df_bartchart["annee_date"]=df_bartchart["annee_temp"] + "-01-01"
 df_bartchart=df_bartchart.drop(columns={'annee_temp'})
 df_bartchart = df_bartchart.astype({'annee': int, 'prix_moyen': int})
+df_bartchart = df_bartchart[["Station","annee_date","prix_moyen","Correspondance_1"]].rename(columns={'Station':'name', 'annee_date':'date', 'prix_moyen':'value', 'Correspondance_1':'category'})
 
 # Filtrage de données abérantes
 df_bartchart = df_bartchart[df_bartchart["Station"] != "PIERRE CURIE"]
