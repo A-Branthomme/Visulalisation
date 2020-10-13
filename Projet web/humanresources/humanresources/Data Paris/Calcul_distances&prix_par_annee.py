@@ -14,7 +14,7 @@ from scipy.spatial.distance import cdist
 
 # Load data
 # dir_path = os.path.dirname(os.path.abspath(__file__))
-dir_path = "/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web"
+dir_path = "/Users/francoishervier/Documents/GitHub/Visulalisation/Projet web/humanresources/humanresources"
 os.chdir(dir_path + "/Data Paris/Appartements")
 df_apts = pd.DataFrame(pd.read_csv('Data_appartements_reprojete.csv', delimiter=',', dtype = str))
 os.chdir(dir_path + "/Data Paris/Stations")
@@ -197,6 +197,9 @@ df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance
 df_resultats_groupes_2019["nb_lignes"][df_resultats_groupes_2019["Correspondance_2"].isnull()==True]=1
 
 df_bartchart = pd.concat([df_resultats_groupes_2014,df_resultats_groupes_2015,df_resultats_groupes_2016,df_resultats_groupes_2017,df_resultats_groupes_2018,df_resultats_groupes_2019], axis=0)
+df_bartchart["annee_temp"]=df_bartchart["annee"].astype({'annee': str})
+df_bartchart["annee_date"]=df_bartchart["annee_temp"] + "-01-01"
+df_bartchart=df_bartchart.drop(columns={'annee_temp'})
 df_bartchart = df_bartchart.astype({'annee': int, 'prix_moyen': int})
 
 # Filtrage de données abérantes
