@@ -5417,28 +5417,6 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ 2.37726720015,48.815930763 ]
-    },
-    "properties": {
-    "index":203,
-    "gares_id":642,
-    "nom_gare":"Pierre Curie",
-    "nomlong":"PIERRE CURIE",
-    "ligne":"7",
-    "x":654272.5743,
-    "y":6857498.469,
-    "prix_moyen_2014":"",
-    "prix_moyen_2015":"",
-    "prix_moyen_2016":"23409,01154",
-    "prix_moyen_2017":"",
-    "prix_moyen_2018":"",
-    "prix_moyen_2019":""
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
        "coordinates":  [ 2.33708168251,48.8825193856 ]
     },
     "properties": {
