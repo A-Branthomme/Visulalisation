@@ -212,7 +212,7 @@ function highlightStation(e) {
   console.log(e);
 
   layer.setStyle({
-    color :'#F00'
+    weight : 5
   });
 
 
@@ -223,7 +223,7 @@ function resetHighlightStation(e) {
   var color = "#" + layer.feature.properties.route_color;
 
   layer.setStyle({
-    color: '#666'
+    weight: 3
   });
 
 };

@@ -1,4 +1,4 @@
-﻿ Station , annee , prix_moyen , Correspondance_1 , Correspondance_2 , Correspondance_3 , Correspondance_4 , Correspondance_5 , Trafic , nb_lignes , annee_date 
+﻿ name,date,value,category,Correspondance_2,Correspondance_3,Correspondance_4,Correspondance_5,Trafic,nb_lignes,annee
  ABBESSES , 2014 , 8823 , 12 ,  ,  ,  ,  , 2349588 , 1 , 2014-01-01 
  ALESIA , 2014 , 8233 , 4 ,  ,  ,  ,  , 4764374 , 1 , 2014-01-01 
  ALEXANDRE  DUMAS , 2014 , 6518 , 2 ,  ,  ,  ,  , 3439879 , 1 , 2014-01-01 
