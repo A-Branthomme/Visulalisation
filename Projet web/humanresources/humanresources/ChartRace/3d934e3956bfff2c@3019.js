@@ -1,7 +1,7 @@
 export default function define(runtime, observer) {
   const main = runtime.module();
   // const fileAttachments = new Map([["data.csv",new URL("./files/aec3792837253d4c6168f9bbecdf495140a5f9bb1cdb12c7c8113cec26332634a71ad29b446a1e8236e0a45732ea5d0b4e86d9d1568ff5791412f093ec06f4f1",import.meta.url)]]);
-  const fileAttachments = new Map([["data.csv",new URL("../../../Data Paris/Stations/Data_bartchart.csv",import.meta.url)]]);
+  const fileAttachments = new Map([["data.csv",new URL("../Data Paris/Stations/Data_bartchart.csv",import.meta.url)]]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable().define("data", ["d3","FileAttachment"], async function(d3,FileAttachment){return(
 d3.csvParse(await FileAttachment("data.csv").text(), d3.autoType)
