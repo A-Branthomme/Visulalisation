@@ -1,0 +1,352 @@
+{
+    "name": "Udemy",
+    "type": "directory",
+    "children": [
+        {
+            "name": "Bonus",
+            "type": "directory",
+            "children": [
+                {
+                    "name": "Bonus - Movie Ratings Analytics.ipynb",
+                    "value": 1565855
+                }
+            ]
+        },
+        {
+            "name": ".DS_Store",
+            "value": 14340
+        },
+        {
+            "name": "Python programming course",
+            "type": "directory",
+            "children": [
+                {
+                    "name": "2.8 Types of Variables.ipynb",
+                    "value": 4200
+                },
+                {
+                    "name": "Section_6_Homework_Fill_in_the_blanks.ipynb",
+                    "value": 87403
+                },
+                {
+                    "name": "Untitled.ipynb",
+                    "value": 555
+                },
+                {
+                    "name": "Section_5_Homework_Fill_in_the_Blanks.ipynb",
+                    "value": 311625
+                },
+                {
+                    "name": "Lists.ipynb",
+                    "value": 12242
+                },
+                {
+                    "name": "Law of Large Numbers.ipynb",
+                    "value": 1052
+                },
+                {
+                    "name": "Functions.ipynb",
+                    "value": 2190
+                },
+                {
+                    "name": "P4-Demographic-Data.csv",
+                    "value": 8360
+                },
+                {
+                    "name": "Movie-Ratings.csv",
+                    "value": 21651
+                },
+                {
+                    "name": "Movie Ratings Analytics.ipynb",
+                    "value": 1565855
+                },
+                {
+                    "name": "Matrices - Basketball Analysis.ipynb",
+                    "value": 1174826
+                },
+                {
+                    "name": "The if Statement.ipynb",
+                    "value": 2475
+                },
+                {
+                    "name": ".ipynb_checkpoints",
+                    "type": "directory",
+                    "children": [
+                        {
+                            "name": "Types of Variables-checkpoint.ipynb",
+                            "value": 4200
+                        },
+                        {
+                            "name": "Functions-checkpoint.ipynb",
+                            "value": 72
+                        },
+                        {
+                            "name": "Python_Home_Work_Section3_Data-checkpoint.ipynb",
+                            "value": 2583
+                        },
+                        {
+                            "name": "Dataframes-checkpoint.ipynb",
+                            "value": 315321
+                        },
+                        {
+                            "name": "Arrays-checkpoint.ipynb",
+                            "value": 3204
+                        },
+                        {
+                            "name": "Matrices - Basketball Analysis-checkpoint.ipynb",
+                            "value": 1174826
+                        },
+                        {
+                            "name": "Section_5_Homework_data-checkpoint.ipynb",
+                            "value": 16291
+                        },
+                        {
+                            "name": "Section_5_Homework_Fill_in_the_Blanks-checkpoint.ipynb",
+                            "value": 311625
+                        },
+                        {
+                            "name": "The if Statement-checkpoint.ipynb",
+                            "value": 2475
+                        },
+                        {
+                            "name": "Section_4_Homework_data-checkpoint.ipynb",
+                            "value": 242150
+                        },
+                        {
+                            "name": "Untitled-checkpoint.ipynb",
+                            "value": 72
+                        },
+                        {
+                            "name": "Law of Large Numbers-checkpoint.ipynb",
+                            "value": 1052
+                        },
+                        {
+                            "name": "Lets create some lists-checkpoint.ipynb",
+                            "value": 12242
+                        },
+                        {
+                            "name": "Movie Ratings Analytics-checkpoint.ipynb",
+                            "value": 1565855
+                        },
+                        {
+                            "name": "Section_6_Homework_Fill_in_the_blanks-checkpoint.ipynb",
+                            "value": 87403
+                        }
+                    ]
+                },
+                {
+                    "name": "Python_Home_Work_Section3_Data.ipynb",
+                    "value": 2583
+                },
+                {
+                    "name": "Arrays.ipynb",
+                    "value": 3204
+                },
+                {
+                    "name": "Dataframes.ipynb",
+                    "value": 315321
+                },
+                {
+                    "name": "P4-Section6-Homework-Dataset.csv",
+                    "value": 80978
+                },
+                {
+                    "name": "Section_5_Homework_data.ipynb",
+                    "value": 16589
+                },
+                {
+                    "name": "Section_4_Homework_data.ipynb",
+                    "value": 242150
+                }
+            ]
+        },
+        {
+            "name": "R programming course",
+            "type": "directory",
+            "children": [
+                {
+                    "name": "Data_courses.csv",
+                    "value": 789016
+                },
+                {
+                    "name": ".DS_Store",
+                    "value": 8196
+                },
+                {
+                    "name": "Sect 2 - Core Programming Principles.R",
+                    "value": 1572
+                },
+                {
+                    "name": "Sect 3 - Fundamentals of R.R",
+                    "value": 1078
+                },
+                {
+                    "name": "Section4 - Matrices.R",
+                    "value": 543
+                },
+                {
+                    "name": "Data",
+                    "type": "directory",
+                    "children": [
+                        {
+                            "name": "Section 6",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "P2-Movie-Ratings.csv",
+                                    "value": 21781
+                                },
+                                {
+                                    "name": ".DS_Store",
+                                    "value": 6148
+                                },
+                                {
+                                    "name": "P2-Section6-Homework-FillInTheBlanks-R.zip",
+                                    "value": 1561
+                                },
+                                {
+                                    "name": "P2-Section6-The-Challenge.pdf",
+                                    "value": 331366
+                                },
+                                {
+                                    "name": "P2-Section6-Homework-The-Challenge.pdf",
+                                    "value": 528312
+                                },
+                                {
+                                    "name": "P2-Section6-Homework-Data.zip",
+                                    "value": 32341
+                                },
+                                {
+                                    "name": "P2-Section6-Grammar-Of-Graphics.pdf",
+                                    "value": 1291434
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Section 1",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": ".DS_Store",
+                                    "value": 6148
+                                },
+                                {
+                                    "name": "P2-Mispriced-Diamonds.csv",
+                                    "value": 789016
+                                }
+                            ]
+                        },
+                        {
+                            "name": ".DS_Store",
+                            "value": 18436
+                        },
+                        {
+                            "name": "Section 4",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": ".DS_Store",
+                                    "value": 6148
+                                },
+                                {
+                                    "name": "Section4-Homework-FillInTheBlanks.R",
+                                    "value": 3317
+                                },
+                                {
+                                    "name": "Section4-Homework-Data.R",
+                                    "value": 2610
+                                },
+                                {
+                                    "name": "P2-Section4-Homework-The-Challenge.pdf",
+                                    "value": 2888332
+                                },
+                                {
+                                    "name": "s4-BasketballData.R",
+                                    "value": 8462
+                                },
+                                {
+                                    "name": "P2-Section4-The-Challenge.pdf",
+                                    "value": 746392
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Section 3",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": ".DS_Store",
+                                    "value": 6148
+                                },
+                                {
+                                    "name": "P2-Section3-Homework-The-Challenge.pdf",
+                                    "value": 301592
+                                },
+                                {
+                                    "name": "Section3-Homework-Data.R",
+                                    "value": 269
+                                },
+                                {
+                                    "name": "Section3-Homework-FillInTheBlanks.R",
+                                    "value": 1948
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Section 2",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "P2-Section2-Homework-The-Challenge.pdf",
+                                    "value": 4869581
+                                },
+                                {
+                                    "name": ".DS_Store",
+                                    "value": 6148
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Section 5",
+                            "type": "directory",
+                            "children": [
+                                {
+                                    "name": "P2-Section5-Homework-The-Challenge.pdf",
+                                    "value": 301220
+                                },
+                                {
+                                    "name": ".DS_Store",
+                                    "value": 6148
+                                },
+                                {
+                                    "name": "P2-Section5-Homework-Vectors-R.zip",
+                                    "value": 2925
+                                },
+                                {
+                                    "name": "P2-Country-Region-Vectors.zip",
+                                    "value": 2247
+                                },
+                                {
+                                    "name": "P2-Demographic-Data.csv",
+                                    "value": 8360
+                                },
+                                {
+                                    "name": "P2-Section5-Homework-FillInTheBlanks-R.zip",
+                                    "value": 870
+                                },
+                                {
+                                    "name": "P2-Section5-The-Challenge.pdf",
+                                    "value": 296393
+                                },
+                                {
+                                    "name": "P2-Section5-Homework-Data.csv",
+                                    "value": 12822
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
