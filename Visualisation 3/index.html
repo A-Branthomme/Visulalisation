@@ -5,10 +5,20 @@
 <body>
 <script type="module">
 
-import define from "./index.js";
-import {Runtime, Library, Inspector} from "./runtime.js";
+import define from "./tidy-tree/index.js";
+import {Runtime, Library, Inspector} from "./tidy-tree/runtime.js";
 
 const runtime = new Runtime();
 const main = runtime.module(define, Inspector.into(document.body));
 
 </script>
+
+<!-- <script type="module">
+
+import define from "./zoomable-sunburst/index.js";
+import {Runtime, Library, Inspector} from "./zoomable-sunburst/runtime.js";
+
+const runtime = new Runtime();
+const main = runtime.module(define, Inspector.into(document.body));
+
+</script> -->
