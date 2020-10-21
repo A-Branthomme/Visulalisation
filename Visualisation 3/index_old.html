@@ -1,0 +1,165 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>TP_Visualisation</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="js-animsition animsition" id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
+
+
+    <header class="templateux-navbar" role="banner">
+
+      <div class="container"  data-aos="fade-down">
+        <div class="row">
+
+          <div class="col-3 templateux-logo">
+            <a href="index.html" class="animsition-link"><b>TP visualisation</b></a>
+          </div>
+          <nav class="col-9 site-nav">
+            <button class="d-block d-md-none hamburger hamburger--spin templateux-toggle templateux-toggle-light ml-auto templateux-toggle-menu" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button> <!-- .templateux-toggle -->
+          </nav> <!-- .site-nav -->
+
+
+        </div> <!-- .row -->
+      </div> <!-- .container -->
+    </header> <!-- .templateux-navba -->
+
+    <div class="templateux-cover" style="background-image: url(images/Plan-RATP.jpg);">
+      <div class="container">
+        <div class="row align-items-lg-center">
+
+          <div class="col-lg-6 order-lg-1">
+            <h1 class="heading mb-3 text-white" data-aos="fade-up">Etude de l'évolution du <strong>prix de l'immobilier </strong> sur le métro parisien</h1>
+            <!-- <p class="lead mb-5 text-white" data-aos="fade-up"  data-aos-delay="100">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
+          </div>
+
+        </div>
+      </div>
+    </div> <!-- .templateux-cover -->
+
+
+    <div class="templateux-section">
+
+      <div class="container"  data-aos="fade-up">
+        <!-- <div class="col-12 col-md-7 mx-auto text-center mb-5"> -->
+        <div class="center">
+          <h2>Introduction</h2>
+        </div>
+        <div class="justify mb-5">
+          <p>Sur les 10 dernières années, les prix de l'immobilier (prix moyen en € au m²) à Paris ont fortement augmenté. Ces fluctuations attirent des investisseurs. L'outil présenté sur ce site web a pour objectif de permettre un premier aperçu global de l'état du marché de l'immobilier dans Paris intra-muros. <br>Pour représenter les évolutions du marché, nous avons décidés d'utiliser les stations de métro comme point de repère. En effet, le métro est un élément central de la vie parisienne et représente un élément de sélection fort pour la recherche d'un logement et ce pour différentes raisons :
+            <ul>
+              <li>trajets quotidiens vers le lieu du travail</li>
+              <li>proximité aux grandes gares</li>
+              <li>facilité de mouvement à travers les différents lieux d'activités...</li>
+            </ul>
+          </p>
+        </div>
+        <div class="center">
+          <h2>Problématique</h2>
+        </div>
+        <div class="justify mb-5">
+          <p style="font-size:20px"> Comment visualiser rapidement et de manière globale le marché de l'immobilier parisien ?</p>
+        </div>
+        <div class="center">
+          <h2>Contexte</h2>
+        </div>
+        <div class ="justify mb-5">
+          <script>
+          chart = {
+              const root = tree(data);
+
+              let x0 = Infinity;
+              let x1 = -x0;
+              root.each(d => {
+                if (d.x > x1) x1 = d.x;
+                if (d.x < x0) x0 = d.x;
+              });
+
+              const svg = d3.create("svg")
+                  .attr("viewBox", [0, 0, width, x1 - x0 + root.dx * 2]);
+
+              const g = svg.append("g")
+                  .attr("font-family", "sans-serif")
+                  .attr("font-size", 10)
+                  .attr("transform", `translate(${root.dy / 3},${root.dx - x0})`);
+
+              const link = g.append("g")
+                .attr("fill", "none")
+                .attr("stroke", "#555")
+                .attr("stroke-opacity", 0.4)
+                .attr("stroke-width", 1.5)
+              .selectAll("path")
+                .data(root.links())
+                .join("path")
+                  .attr("d", d3.linkHorizontal()
+                      .x(d => d.y)
+                      .y(d => d.x));
+
+              const node = g.append("g")
+                  .attr("stroke-linejoin", "round")
+                  .attr("stroke-width", 3)
+                .selectAll("g")
+                .data(root.descendants())
+                .join("g")
+                  .attr("transform", d => `translate(${d.y},${d.x})`);
+
+              node.append("circle")
+                  .attr("fill", d => d.children ? "#555" : "#999")
+                  .attr("r", 2.5);
+
+              node.append("text")
+                  .attr("dy", "0.31em")
+                  .attr("x", d => d.children ? -6 : 6)
+                  .attr("text-anchor", d => d.children ? "end" : "start")
+                  .text(d => d.data.name)
+                .clone(true).lower()
+                  .attr("stroke", "white");
+
+              return svg.node();
+                    }
+              data = FileAttachment("flare-2.json").json()
+
+              tree = data => {
+                const root = d3.hierarchy(data);
+                root.dx = 10;
+                root.dy = width / (root.height + 1);
+                return d3.tree().nodeSize([root.dx, root.dy])(root);
+              }
+              width = 954
+              d3 = require("d3@6")
+          </script>
+        </div>
+      </div>
+    </div> <!-- .templateux-section -->
+  </div> <!-- .templateux-section -->
+
+
+  <footer class="templateux-footer bg-light">
+    <div class="container">
+      <div class="row pt-5 text-center">
+        <div class="col-md-12 text-center"><p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Site inspiré de <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p></div>
+      </div> <!-- .row -->
+
+    </div>
+  </footer> <!-- .templateux-footer -->
+
+
+</div> <!-- .js-animsition -->
+
+
+<script src="js/scripts-all.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
