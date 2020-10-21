@@ -1,7 +1,8 @@
 // https://observablehq.com/@d3/tidy-tree@170
 export default function define(runtime, observer) {
   const main = runtime.module();
-  const fileAttachments = new Map([["flare-2.json",new URL("../flare-2.json",import.meta.url)]]);
+  // const fileAttachments = new Map([["flare-2.json",new URL("../flare-2.json",import.meta.url)]]);
+  const fileAttachments = new Map([["flare-2.json",new URL("../TP3_Udemy_FH.json",import.meta.url)]]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["md"], function(md){return(
 md`# Tidy Tree
