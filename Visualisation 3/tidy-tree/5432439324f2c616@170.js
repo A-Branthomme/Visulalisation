@@ -4,11 +4,6 @@ export default function define(runtime, observer) {
   // const fileAttachments = new Map([["flare-2.json",new URL("../flare-2.json",import.meta.url)]]);
   const fileAttachments = new Map([["flare-2.json",new URL("../TP3_Udemy_FH.json",import.meta.url)]]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
-  main.variable(observer()).define(["md"], function(md){return(
-md`# Tidy Tree
-
-D3’s [tree layout](https://github.com/d3/d3-hierarchy/blob/master/README.md#tree) implements the [Reingold–Tilford “tidy” algorithm](http://reingold.co/tidier-drawings.pdf) for constructing hierarchical node-link diagrams, improved to run in linear time by [Buchheim *et al.*](http://dirk.jivas.de/papers/buchheim02improving.pdf) Tidy trees are typically more compact than [cluster dendrograms](/@d3/cluster-dendrogram), which place all leaves at the same level. See also the [radial variant](/@d3/radial-tidy-tree).`
-)});
   main.variable(observer("chart")).define("chart", ["tree","data","d3","width"], function(tree,data,d3,width)
 {
   const root = tree(data);
@@ -63,10 +58,10 @@ D3’s [tree layout](https://github.com/d3/d3-hierarchy/blob/master/README.md#tr
   return svg.node();
 }
 );
-  main.variable(observer("data")).define("data", ["FileAttachment"], function(FileAttachment){return(
+  main.define("data", ["FileAttachment"], function(FileAttachment){return(
 FileAttachment("flare-2.json").json()
 )});
-  main.variable(observer("tree")).define("tree", ["d3","width"], function(d3,width){return(
+  main.define("tree", ["d3","width"], function(d3,width){return(
 data => {
   const root = d3.hierarchy(data);
   root.dx = 10;
@@ -74,10 +69,10 @@ data => {
   return d3.tree().nodeSize([root.dx, root.dy])(root);
 }
 )});
-  main.variable(observer("width")).define("width", function(){return(
+  main.define("width", function(){return(
 954
 )});
-  main.variable(observer("d3")).define("d3", ["require"], function(require){return(
+  main.define("d3", ["require"], function(require){return(
 require("d3@6")
 )});
   return main;
