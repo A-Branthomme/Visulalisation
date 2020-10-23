@@ -4,11 +4,6 @@ export default function define(runtime, observer) {
   // const fileAttachments = new Map([["flare-2.json",new URL("../flare-2.json",import.meta.url)]]);
   const fileAttachments = new Map([["flare-2.json",new URL("../TP3_Udemy_FH.json",import.meta.url)]]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
-  main.variable(observer()).define(["md"], function(md){return(
-md`# Zoomable Sunburst
-
-This variant of a [sunburst diagram](/@d3/sunburst) shows only two layers of the hierarchy at a time. Click a node to zoom in, or the center to zoom out. Compare to an [icicle](/@d3/zoomable-icicle).`
-)});
   main.variable(observer("chart")).define("chart", ["partition","data","d3","width","color","arc","format","radius"], function(partition,data,d3,width,color,arc,format,radius)
 {
   const root = partition(data);
@@ -106,10 +101,10 @@ This variant of a [sunburst diagram](/@d3/sunburst) shows only two layers of the
   return svg.node();
 }
 );
-  main.variable(observer("data")).define("data", ["FileAttachment"], function(FileAttachment){return(
+  main.define("data", ["FileAttachment"], function(FileAttachment){return(
 FileAttachment("flare-2.json").json()
 )});
-  main.variable(observer("partition")).define("partition", ["d3"], function(d3){return(
+  main.define("partition", ["d3"], function(d3){return(
 data => {
   const root = d3.hierarchy(data)
       .sum(d => d.value)
@@ -119,19 +114,19 @@ data => {
     (root);
 }
 )});
-  main.variable(observer("color")).define("color", ["d3","data"], function(d3,data){return(
+  main.define("color", ["d3","data"], function(d3,data){return(
 d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
 )});
-  main.variable(observer("format")).define("format", ["d3"], function(d3){return(
+  main.define("format", ["d3"], function(d3){return(
 d3.format(",d")
 )});
-  main.variable(observer("width")).define("width", function(){return(
+  main.define("width", function(){return(
 932
 )});
-  main.variable(observer("radius")).define("radius", ["width"], function(width){return(
+  main.define("radius", ["width"], function(width){return(
 width / 6
 )});
-  main.variable(observer("arc")).define("arc", ["d3","radius"], function(d3,radius){return(
+  main.define("arc", ["d3","radius"], function(d3,radius){return(
 d3.arc()
     .startAngle(d => d.x0)
     .endAngle(d => d.x1)
@@ -140,7 +135,7 @@ d3.arc()
     .innerRadius(d => d.y0 * radius)
     .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1))
 )});
-  main.variable(observer("d3")).define("d3", ["require"], function(require){return(
+  main.define("d3", ["require"], function(require){return(
 require("d3@6")
 )});
   return main;
