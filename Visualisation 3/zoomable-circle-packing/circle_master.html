@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Dopetrope by HTML5 UP</title>
+		<title>Projet Visualisation N°3</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../html5up-dopetrope/assets/css/main.css" />
@@ -18,7 +18,7 @@
 			<section id="header">
 
 				<!-- Logo -->
-					<h1><a href="../html5up-dopetrope/index.html">Dopetrope</a></h1>
+					<h1><a href="../html5up-dopetrope/index.html">Visualisation d'objects JSON</a></h1>
 
 				<!-- Nav -->
 					<nav id="nav">
@@ -58,18 +58,17 @@
 									eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
 									elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor.
 								</p>
-
 								<script type="module">
 
 								import define from "./index.js";
 								import {Runtime, Library, Inspector} from "./runtime.js";
 
 								const runtime = new Runtime();
-								const treecontainer = document.getElementById('tree');
-								const main = runtime.module(define, Inspector.into(treecontainer));
+								const circlecontainer = document.getElementById('circle');
+								const main = runtime.module(define, Inspector.into(circlecontainer));
 
 								</script>
-								<div id="tree"></div>
+								<div id="circle"></div>
 							</article>
 
 					</div>
