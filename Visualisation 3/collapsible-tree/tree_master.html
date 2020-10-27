@@ -42,20 +42,13 @@
 									<h2>Détail de la visualisation</h2>
 								</header>
 								<p>
-									Vestibulum scelerisque ultricies libero id hendrerit. Vivamus malesuada quam faucibus ante dignissim auctor
-									hendrerit libero placerat. Nulla facilisi. Proin aliquam felis non arcu molestie at accumsan turpis commodo.
-									Proin elementum, nibh non egestas sodales, augue quam aliquet est, id egestas diam justo adipiscing ante.
-									Pellentesque tempus nulla non urna eleifend ut ultrices nisi faucibus.
-									Vestibulum scelerisque ultricies libero id hendrerit. Vivamus malesuada quam faucibus ante dignissim auctor
-									hendrerit libero placerat. Nulla facilisi. Proin aliquam felis non arcu molestie at accumsan turpis commodo.
-									Proin elementum, nibh non egestas sodales, augue quam aliquet est, id egestas diam justo adipiscing ante.
+									Le visuel qui nous permet de représenter l'ensemble des fichiers présents sur notre disque dur est ici un arbre enraciné interactif (appelé "<i>Collapsible Tree</i>"). Nous avons paramétré ce modèle depuis d3.js grâce à la contribution de Mike Bostock.
 								</p>
 								<p>
-									Praesent a dolor leo. Duis in felis in tortor lobortis volutpat et pretium tellus. Vestibulum ac ante nisl,
-									a elementum odio. Duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel mattis.
-									placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-									eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-									elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor.
+									L'arbre comporte une fonction interactive qui se déclenche au clic de souris sur les sommets pour faire dérouler les sous-branches ou pour les cacher, sommet par sommet. Ceci nous permet de parcourir l'arbre en largeur, notamment en raison de la fonction clic.
+								</p>
+								<p>
+									Les couleurs des sommets de l'arbre sont le gris et le noir ; le <strong><span style="color :black">noir</span></strong> lorsque nous avons un sommet (généralement un dossier du disque dur) et le <strong><span style="color: grey ">gris</span></strong> lorsque nous avons une feuille (pour tous les fichiers et pour les dossiers qui n'ont ni fichier ni sous-dossier). Les branches sont grises et la couleur ne nous permet pas ici de leur donner une information, car la seule qui existe est le lien de filiation qui n'a pas besoin ici selon nous d'autres éléments de visualisation que celui de la forme.
 								</p>
 
 								<script type="module">
